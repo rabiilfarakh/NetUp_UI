@@ -3,24 +3,23 @@ export interface User {
     firstName: string;
     lastName: string;
     email: string;
-    birthday: string; 
+    birthday: string;
     password: string;
     address: string;
     experience: string;
     location: string;
     photo: string;
-    role: 'USER' | 'ADMIN'; 
+    role: 'USER' | 'ADMIN';
   }
 
 export interface UserRequest{
     firstName: string;
     lastName: string;
     email: string;
-    birthday: string; 
+    birthday: string;
     password: string;
     address: string;
     experience: string;
     location: string;
     photo: string;
 }
-  

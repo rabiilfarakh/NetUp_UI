@@ -16,7 +16,8 @@ export class UserService {
 
 
   public save(userRequest: UserRequest):Observable<User>{
-    return this.http.post<User>("http://localhost:8080/api/users",userRequest)
+    console.log("serv", userRequest)
+    return this.http.post<any>("http://localhost:8080/api/users",userRequest)
   }
-  
+
 }
