@@ -9,12 +9,14 @@ import { UserReducer } from './state/reducer/user.reducer';
 import { StoreModule } from '@ngrx/store';
 import { RegisterComponent } from './commponents/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './commponents/login/login.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

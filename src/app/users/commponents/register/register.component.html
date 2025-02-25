@@ -1,69 +1,89 @@
-<section class="bg-gray-50 dark:bg-gray-900">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+<section class="bg-zinc-950">
+<div class="bg-zinc-950">
+<div class="flex flex-col justify-center items-center bg-zinc-950 min-h-[100vh] py-4">
+  <div class="mx-auto flex w-full flex-col justify-center px-4">
+    <a class="mt-4 w-fit text-white" href="/">
+      <div class="flex w-fit items-center">
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="mr-2 h-[13px] w-[8px] text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"></path>
+        </svg>
+        <p class="ml-0 text-sm text-white">Back to the website</p>
+      </div>
+    </a>
 
-      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+    <div class="mt-6 flex flex-col w-[350px] max-w-[450px] mx-auto">
+      <p class="text-2xl font-bold text-white">Create an Account</p>
+      <p class="mb-2 mt-1 text-sm text-zinc-400">Fill in your details to register</p>
+
+      <div class="mt-4">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="firstName" class="text-sm text-white">First Name</label>
+              <input type="text" id="firstName" formControlName="firstName" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="John" required>
+            </div>
+            <div>
+              <label for="lastName" class="text-sm text-white">Last Name</label>
+              <input type="text" id="lastName" formControlName="lastName" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="Doe" required>
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="text-sm text-white">Email</label>
+            <input type="email" id="email" formControlName="email" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="name@company.com" required>
+          </div>
+
+          <div>
+            <label for="birthday" class="text-sm text-white">Birthday</label>
+            <input type="date" id="birthday" formControlName="birthday" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" required>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="password" class="text-sm text-white">Password</label>
+              <input type="password" id="password" formControlName="password" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="••••••••" required>
+            </div>
+            <div>
+              <label for="confirmPassword" class="text-sm text-white">Confirm</label>
+              <input type="password" id="confirmPassword" formControlName="confirmPassword" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="••••••••" required>
+            </div>
+          </div>
+
+          <div>
+            <label for="address" class="text-sm text-white">Address</label>
+            <input type="text" id="address" formControlName="address" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="123 Main St">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="experience" class="text-sm text-white">Experience</label>
+              <input type="text" id="experience" formControlName="experience" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="5 years">
+            </div>
+            <div>
+              <label for="location" class="text-sm text-white">Location</label>
+              <input type="text" id="location" formControlName="location" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="City">
+            </div>
+          </div>
+
+          <div>
+            <label for="photo" class="text-sm text-white">Photo URL</label>
+            <input type="text" id="photo" formControlName="photo" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="https://example.com/photo.jpg">
+          </div>
+
+          <button type="submit" class="w-full bg-white text-zinc-950 hover:bg-white/90 active:bg-white/80 flex items-center justify-center rounded-lg px-4 py-3 text-sm font-medium mt-4">
             Create an account
-          </h1>
-          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4 md:space-y-6">
+          </button>
+        </form>
 
-            <div>
-              <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
-              <input type="text" id="firstName" formControlName="firstName" class="form-input" placeholder="John" required>
-            </div>
-
-            <div>
-              <label for="lastName" class="block mb-2 text-sm font-medium text-gray- 900 dark:text-white">Last Name</label>
-              <input type="text" id="lastName" formControlName="lastName" class="form-input" placeholder="Doe" required>
-            </div>
-
-            <div>
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-              <input type="email" id="email" formControlName="email" class="form-input" placeholder="name@company.com" required>
-            </div>
-
-            <div>
-              <label for="birthday" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Birthday</label>
-              <input type="date" id="birthday" formControlName="birthday" class="form-input" required>
-            </div>
-
-            <div>
-              <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-              <input type="password" id="password" formControlName="password" class="form-input" placeholder="••••••••" required>
-            </div>
-
-            <div>
-              <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
-              <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-input" placeholder="••••••••" required>
-            </div>
-
-            <div>
-              <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-              <input type="text" id="address" formControlName="address" class="form-input" placeholder="123 Main St">
-            </div>
-
-            <div>
-              <label for="experience" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Experience</label>
-              <input type="text" id="experience" formControlName="experience" class="form-input" placeholder="5 years">
-            </div>
-
-            <div>
-              <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
-              <input type="text" id="location" formControlName="location" class="form-input" placeholder="City, Country">
-            </div>
-
-            <div>
-              <label for="photo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Photo URL</label>
-              <input type="text" id="photo" formControlName="photo" class="form-input" placeholder="https://example.com/photo.jpg">
-            </div>
-
-            <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-              Create an account
-            </button>
-
-          </form>
-        </div>
+        <p class="font-medium text-white text-sm mt-3">
+          Already have an account?
+        <p class="font-medium text-white text-sm mt-3">
+          Don’t have an account?
+          <a routerLink="/auth/login" class="text-white">Sign in</a>
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</div>
+</div>
+</section>
