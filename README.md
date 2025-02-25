@@ -1,59 +1,57 @@
 # NetUp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+**NetUp** est une application web de networking professionnel conçue pour faciliter les échanges entre professionnels, encourager les rencontres en personne, et centraliser les informations pertinentes dans un domaine spécifique.
 
-## Development server
+---
 
-To start a local development server, run:
+## Aperçu du projet
 
-```bash
-ng serve
-```
+NetUp vise à résoudre les problèmes de networking professionnel en offrant :
+- Une **communauté en ligne** pour partager des articles, poser des questions et interagir avec des professionnels partageant les mêmes intérêts.
+- Un **système de rencontres en personne** basé sur la géolocalisation, permettant aux utilisateurs de publier leur disponibilité pour des rencontres spontanées.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Fonctionnalités
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Partie Rencontre Réelle
+- Publication de disponibilités pour des rencontres en personne.
+- Notifications en temps réel pour les rencontres géolocalisées.
+- Carte interactive pour visualiser les disponibilités des autres utilisateurs.
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Partie Blog/Communauté
+- Création et gestion de profils utilisateurs.
+- Publication d'articles et de questions.
+- Fil d'actualités pour suivre les dernières tendances.
+- 
+---
 
-```bash
-ng generate --help
-```
+## Technologies utilisées
 
-## Building
+### Back-end
+- **Spring Boot** : Framework Java pour le développement d'API.
+- **Hibernate** : ORM pour la gestion de la base de données.
+- **PostgreSQL** : Base de données relationnelle.
 
-To build the project run:
+### Front-end
+- **HTML/CSS** : Structure et style de l'interface.
+- **JavaScript** : Interactivité côté client.
+- **Angular** : Framework pour une interface utilisateur dynamique.
 
-```bash
-ng build
-```
+### Outils
+- **Docker** : Containerisation de l'application.
+- **Git** : Gestion des versions.
+- **Postman** : Test des API.
+- **Swagger** : Documentation interactive des API.
+- **CI/CD** : Intégration Continue/Déploiement Continu (ex: GitHub Actions, Jenkins).
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Installation
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Prérequis
+- Java 17 ou supérieur.
+- PostgreSQL.
+- Node.js (pour le front-end).
+- Docker.
