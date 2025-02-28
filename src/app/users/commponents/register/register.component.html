@@ -17,37 +17,32 @@
 
       <div class="mt-4">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-3">
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label for="firstName" class="text-sm text-white">First Name</label>
-              <input type="text" id="firstName" formControlName="firstName" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="John" required>
-            </div>
-            <div>
-              <label for="lastName" class="text-sm text-white">Last Name</label>
-              <input type="text" id="lastName" formControlName="lastName" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="Doe" required>
-            </div>
+          <div>
+            <label for="username" class="text-sm text-white">Username</label>
+            <input type="text" id="username" formControlName="username" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="rabii" required>
           </div>
-
           <div>
             <label for="email" class="text-sm text-white">Email</label>
             <input type="email" id="email" formControlName="email" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="name@company.com" required>
           </div>
-
+          <div>
+            <label for="community" class="text-sm text-white">Community</label>
+            <select id="community" formControlName="community_id" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm focus:outline-0">
+              <option selected disabled value="">choose your community</option>
+              <option *ngFor="let community of communities" [value]="community.id">
+                {{ community.name }}
+              </option>
+            </select>
+          </div>
           <div>
             <label for="birthday" class="text-sm text-white">Birthday</label>
             <input type="date" id="birthday" formControlName="birthday" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" required>
           </div>
 
-          <div class="grid grid-cols-2 gap-3">
             <div>
               <label for="password" class="text-sm text-white">Password</label>
               <input type="password" id="password" formControlName="password" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="••••••••" required>
             </div>
-            <div>
-              <label for="confirmPassword" class="text-sm text-white">Confirm</label>
-              <input type="password" id="confirmPassword" formControlName="confirmPassword" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-3 py-2 text-sm placeholder:text-zinc-400 focus:outline-0" placeholder="••••••••" required>
-            </div>
-          </div>
 
           <div>
             <label for="address" class="text-sm text-white">Address</label>

@@ -1,23 +1,34 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User, UserRequest } from '../model/user.model';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-const apiUrl = "http://localhost:8080/api/users";
+import { User } from '../model/user.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
 export class UserService {
+  private apiUrl = `${environment.apiUrl}/api`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-
-  public save(userRequest: UserRequest):Observable<User>{
-    console.log("serv", userRequest)
-    return this.http.post<any>("http://localhost:8080/api/users",userRequest)
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/${id}`);
+  }
+
+  registerUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/register`, user);
+  }
+
+  updateUser(id: number, user: Partial<User>): Observable<User> {
+    return this.http.patch<User>(`${this.apiUrl}/users/${id}`, user);
+  }
+
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/users/${id}`);
+  }
 }
