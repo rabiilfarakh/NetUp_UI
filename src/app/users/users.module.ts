@@ -5,13 +5,17 @@ import { UsersComponent } from './users.component';
 import { RegisterComponent } from './commponents/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './commponents/login/login.component';
+import { DashboardComponent } from './commponents/dashboard/dashboard.component';
+import { ProfilComponent } from './commponents/profil/profil.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    ProfilComponent
   ],
   imports: [
     CommonModule,
