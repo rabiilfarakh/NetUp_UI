@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
             //this.router.navigate(['users/dashboard']);
           }else{
             console.log(response)
-            //this.router.navigate(['admin/dashboard']);
+            this.router.navigate(['/dashboard']);
           }
         }
       },
