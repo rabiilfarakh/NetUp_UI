@@ -13,7 +13,7 @@
 
         <div class="my-auto mb-auto mt-8 flex flex-col w-[350px] max-w-[450px] mx-auto md:mt-[70px] lg:mt-[130px]">
           <p class="text-[32px] font-bold text-white">Sign In</p>
-          <p class="mb-2.5 mt-2.5 font-normal text-zinc-400">Enter your email and password to sign in!</p>
+          <p class="mb-2.5 mt-2.5 font-normal text-zinc-400">Enter your username and password to sign in!</p>
 
           <div class="mt-8">
             <!-- Bouton Google -->
@@ -43,8 +43,8 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mb-4">
               <div class="grid gap-2">
                 <div class="grid gap-1">
-                  <label for="email" class="text-white">Email</label>
-                  <input type="email" id="email" formControlName="email" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 min-h-[44px]" placeholder="name@example.com" required autocapitalize="none" autocomplete="email" autocorrect="off">
+                  <label for="username" class="text-white">Username</label>
+                  <input type="username" id="username" formControlName="username" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 min-h-[44px]" placeholder="username" required autocapitalize="none" autocomplete="username" autocorrect="off">
 
                   <label for="password" class="text-white mt-2">Password</label>
                   <input type="password" id="password" formControlName="password" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 min-h-[44px]" placeholder="Password" required autocomplete="current-password">
@@ -58,7 +58,7 @@
 
             <!-- Liens supplémentaires -->
             <p><a routerLink="/forgot-password" class="font-medium text-white text-sm">Forgot your password?</a></p>
-<!--            <p><a routerLink="/email-signin" class="font-medium text-white text-sm">Sign in via magic link</a></p>-->
+<!--            <p><a routerLink="/username-signin" class="font-medium text-white text-sm">Sign in via magic link</a></p>-->
             <p><a routerLink="/auth/register" class="font-medium text-white text-sm">Don't have an account? Sign up</a></p>
           </div>
         </div>

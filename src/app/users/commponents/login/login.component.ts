@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../auth/service/auth.service';
+
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -11,17 +14,18 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
+  errorMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthService,
     private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],  
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
-
   ngOnInit(): void {}
 
   get f() {
@@ -36,12 +40,27 @@ export class LoginComponent implements OnInit {
     }
 
     const loginData = {
-      email: this.loginForm.value.email,
+      username: this.loginForm.value.username,
       password: this.loginForm.value.password
     };
 
-    console.log('Login data:', loginData);
-
-    this.router.navigate(['/dashboard']);
+    this.authService.login(loginData).subscribe({
+      next: (response) => {
+        if (response.token) {
+          this.authService.saveToken(response.token);
+          if(response.role == "USER"){
+            console.log(response)
+            //this.router.navigate(['users/dashboard']);
+          }else{
+            console.log(response)
+            //this.router.navigate(['admin/dashboard']);
+          }
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        this.errorMessage = 'Échec de connexion. Vérifiez vos identifiants.';
+        console.error('Erreur de connexion:', error);
+      }
+    });
   }
 }

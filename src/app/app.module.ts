@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { AuthInterceptor } from './users/auth/interceptor/auth.interceptor'; 
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([AuthInterceptor]) 
+    ),
   ],
   bootstrap: [AppComponent]
 })
