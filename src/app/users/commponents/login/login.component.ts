@@ -49,9 +49,8 @@ export class LoginComponent implements OnInit {
         if (response.token) {
           this.authService.saveToken(response.token, response.role);
 
-          if(response.role == "USER"){
-            console.log(response)
-            //this.router.navigate(['users/dashboard']);
+          if(response.role == "ROLE_USER"){
+            this.router.navigate(['/profile']);
           }else{
             console.log(response)
             this.router.navigate(['/dashboard']);
