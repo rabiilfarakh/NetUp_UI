@@ -15,9 +15,10 @@ export class AuthService {
     return this.http.post<any>(this.apiUrl, credentials);
   }
 
-  saveToken(token: string): void {
+  saveToken(token: string, role: string): void {
     if (isPlatformBrowser(this.platformId)) {
     localStorage.setItem('token', token);
+    localStorage.setItem('role', role);
     }
   }
 
@@ -31,6 +32,7 @@ export class AuthService {
   logout(): void {
     if (isPlatformBrowser(this.platformId)) {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     }
   }
 }

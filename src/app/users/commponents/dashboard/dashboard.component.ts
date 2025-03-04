@@ -4,6 +4,8 @@ import { CommunityDTOReq, CommunityDTORes } from '../../../community/model/commu
 import { User } from '../../model/user.model';
 import { CommunityService } from '../../../community/service/community.service';
 import { UserService } from '../../service/user.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../auth/service/auth.service';
 
 
 @Component({
@@ -13,9 +15,7 @@ import { UserService } from '../../service/user.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
   Math = Math;
-  
   communities: CommunityDTORes[] = [];
   users: User[] = [];
   
@@ -46,6 +46,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private communityService: CommunityService,
     private userService: UserService,
+    private authService: AuthService,
+    private router: Router,
     private fb: FormBuilder
   ) {
     this.communityForm = this.fb.group({
@@ -64,6 +66,11 @@ export class DashboardComponent implements OnInit {
     this.loadCommunities();
     this.loadUsers();
     this.calculateStats();
+  }
+
+  logout(): void {
+    this.authService.logout(); 
+    this.router.navigate(['/login']);
   }
 
   toggleSidebar(): void {
