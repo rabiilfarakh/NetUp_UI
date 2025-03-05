@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.authService.saveToken(response.token, response.role);
 
           if(response.role == "ROLE_USER"){
-            this.router.navigate(['/profile']);
+            this.router.navigate(['/article/home']);
           }else{
             console.log(response)
             this.router.navigate(['/dashboard']);
