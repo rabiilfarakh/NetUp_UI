@@ -14,7 +14,6 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard, roleGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
 
-  { path: '**', redirectTo: 'login' } 
 
 ];
 

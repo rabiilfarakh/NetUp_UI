@@ -1,0 +1,105 @@
+<!-- Conteneur principal -->
+<div class="max-w-6xl mx-auto px-5">
+    <!-- Header -->
+    <header class="flex flex-col lg:flex-row justify-between items-center my-5">
+      <div class="flex w-full lg:w-auto items-center justify-between">
+        <a href="/" class="text-lg">
+          <span class="font-bold text-slate-800">Net</span><span class="text-slate-500">Up</span>
+        </a>
+        <div class="block lg:hidden">
+          <button id="mobile-menu-toggle" aria-label="Toggle Menu" (click)="toggleMobileMenu()">
+            <svg fill="currentColor" class="w-4 h-4 text-gray-800" viewBox="0 0 24 24">
+              <path *ngIf="!mobileMenuOpen" fill-rule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"></path>
+              <path *ngIf="mobileMenuOpen" fill-rule="evenodd" d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav [ngClass]="{'hidden': !mobileMenuOpen}" class="w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+        <ul class="flex flex-col lg:flex-row lg:gap-3">
+          <li><a href="/features" class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">Features</a></li>
+          <li><a href="/pricing" class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">Pricing</a></li>
+          <li><a href="/about" class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">About</a></li>
+          <li><a href="/blog" class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">Blog</a></li>
+          <li><a href="/contact" class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">Contact</a></li>
+        </ul>
+        <div class="lg:hidden flex items-center mt-3 gap-4">
+          <a href="#" class="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200 text-center rounded-sm">Log in</a>
+          <a href="#" class="w-full px-4 py-2 bg-black text-white hover:bg-gray-800 text-center rounded-sm">Sign up</a>
+        </div>
+      </nav>
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="#">Log in</a>
+        <a href="#" class="px-4 py-2 bg-black text-white hover:bg-gray-800 rounded-sm">Sign up</a>
+      </div>
+    </header>
+  
+    <!-- Main Content -->
+    <main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+      <div class="py-6 md:order-1 hidden md:block">
+        <img src="assets/hero.png" alt="Hero Image" class="w-full max-w-[520px]">
+      </div>
+      <div>
+        <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+          Bienvenue sur NetUp
+        </h1>
+        <p class="text-lg mt-4 text-slate-600 max-w-xl">
+          NetUp est une plateforme pour partager et découvrir des articles inspirants.
+          Créez, commentez et aimez vos contenus préférés !
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a href="#" class="px-5 py-2.5 bg-black text-white hover:bg-gray-800 rounded-sm flex gap-1 items-center justify-center">
+            Commencer
+          </a>
+        </div>
+      </div>
+    </main>
+  
+    <!-- Section Articles -->
+    <div class="mt-16">
+      <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+        Nos Derniers Articles
+      </h2>
+      <p class="text-lg mt-4 text-slate-600">
+        Découvrez les articles récents publiés par notre communauté.
+      </p>
+      <div *ngIf="loading" class="mt-4">Chargement...</div>
+      <div *ngIf="error" class="mt-4 text-red-500">{{ error }}</div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-8 gap-8">
+        <div *ngFor="let article of articles" class="flex flex-col bg-white rounded-lg shadow-md p-4">
+          <h3 class="font-semibold text-lg">{{ article.title }}</h3>
+          <p class="text-slate-500 mt-2 leading-relaxed">{{ article.description }}</p>
+          <p class="text-sm text-slate-400 mt-2">Publié le {{ formatDate(article.date) }}</p>
+  
+          <!-- Likes -->
+          <div class="mt-4 flex items-center gap-2">
+            <button (click)="likeArticle(article.id)" class="text-red-500 hover:text-red-700">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </button>
+            <span>{{ likes[article.id] }} J'aime</span>
+          </div>
+  
+          <!-- Commentaires -->
+          <div class="mt-4">
+            <h4 class="text-sm font-semibold">Commentaires</h4>
+            <ul class="mt-2">
+              <li *ngFor="let comment of comments[article.id]" class="text-sm text-slate-600">{{ comment }}</li>
+            </ul>
+            <div class="mt-2 flex gap-2">
+              <input [(ngModel)]="newComment[article.id]" placeholder="Ajouter un commentaire" class="w-full p-2 border rounded">
+              <button (click)="addComment(article.id)" class="px-3 py-1 bg-black text-white rounded hover:bg-gray-800">Envoyer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer -->
+    <footer class="my-20">
+      <p class="text-center text-sm text-slate-500">
+        Copyright © 2025 NetUp. Tous droits réservés.
+      </p>
+    </footer>
+  </div>
