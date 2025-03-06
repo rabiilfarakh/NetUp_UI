@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ArticleRoutingModule } from './article-routing.module';
 
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
-import { HomeComponent } from './components/home/home.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -18,6 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ArticleRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
+  exports: [
+    HomeComponent,
+
+  ],
 })
 export class ArticleModule { }

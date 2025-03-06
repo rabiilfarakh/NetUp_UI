@@ -6,9 +6,24 @@ export interface ArticleDTOReq {
 }
 
 
+// export interface ArticleDTORes {
+//   id: number;
+//   title: string;
+//   description: string;
+//   date: string; 
+// }
+
+
 export interface ArticleDTORes {
-  id: number;
-  title: string;
-  description: string;
-  date: string; 
+  id: number
+  title: string
+  description: string
+  date: string
+  category?: string
+  imageUrl?: string
+  author?: {
+    name: string
+    avatar: string
+  }
 }
+
