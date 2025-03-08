@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthInterceptor } from './users/auth/interceptor/auth.interceptor'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthInterceptor } from './users/auth/interceptor/auth.interceptor';
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     provideClientHydration(withEventReplay()),
