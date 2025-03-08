@@ -5,25 +5,27 @@ export interface ArticleDTOReq {
   date: string; 
 }
 
-
-// export interface ArticleDTORes {
-//   id: number;
-//   title: string;
-//   description: string;
-//   date: string; 
-// }
-
-
 export interface ArticleDTORes {
-  id: number
-  title: string
-  description: string
-  date: string
-  category?: string
-  imageUrl?: string
-  author?: {
-    name: string
-    avatar: string
-  }
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  photo?: string | null; 
+  user: {
+    id: string;
+    username: string;
+    email: string;
+    birthday: string;
+    address: string;
+    experience: number;
+    location: string;
+    photo: string;
+    role: string;
+    community: {
+      id: number;
+      name: string;
+      description: string;
+      quantity: number | null;
+    };
+  }| null;
 }
-
