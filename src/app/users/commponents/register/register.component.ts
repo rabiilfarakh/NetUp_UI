@@ -5,21 +5,22 @@ import { Router } from '@angular/router';
 import { CommunityService } from '../../../community/service/community.service';
 import { CommunityDTORes } from '../../../community/model/community.model';
 
-
 @Component({
-  standalone: false, 
+  standalone: false,
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  communities: CommunityDTORes[] = []; 
+  communities: CommunityDTORes[] = [];
+  successMessage: string | null = null; 
+  errorMessage: string | null = null; 
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private communityService: CommunityService, 
+    private communityService: CommunityService,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
@@ -27,26 +28,25 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       birthday: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      address: [''],
-      experience: [''],
-      location: [''],
+      address: ['', Validators.required],
+      experience: ['', Validators.required],
+      location: ['', Validators.required],
       photo: [''],
-      community_id: ['', Validators.required] 
+      community_id: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
-   this.getCommunities();
+    this.getCommunities();
   }
 
   getCommunities(): void {
     this.communityService.getAllCommunities().subscribe({
       next: (res) => {
-        console.log('Communautés récupérées', res); 
         this.communities = res;
       },
       error: (err) => {
-        console.error('Erreur lors de la récupération des communautés', err);
+        console.error('Error fetching communities', err);
       }
     });
   }
@@ -55,18 +55,22 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.userService.registerUser(this.registerForm.value).subscribe({
         next: (res) => {
-          console.log('Inscription réussie', res);
-          alert('Inscription réussie!');
-  
+          this.successMessage = 'Registration successful!'; 
+          this.errorMessage = null; 
 
-          this.router.navigateByUrl('/auth/login');
+
+          setTimeout(() => {
+            this.router.navigateByUrl('/login');
+          }, 3000);
         },
         error: (err) => {
-          console.error('Erreur lors de l’inscription', err);
-          alert('Erreur lors de l’inscription');
+          this.errorMessage = 'Registration failed. Please try again.';
+          this.successMessage = null; 
+          console.error('Registration failed', err);
         }
       });
+    } else {
+      this.registerForm.markAllAsTouched();
     }
   }
-  
 }

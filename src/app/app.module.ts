@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthInterceptor } from './users/auth/interceptor/auth.interceptor'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,8 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [
     provideClientHydration(withEventReplay()),
     provideHttpClient(
+      withFetch(),
       withInterceptors([AuthInterceptor]) 
-    ),
+    )
   ],
   bootstrap: [AppComponent]
 })
