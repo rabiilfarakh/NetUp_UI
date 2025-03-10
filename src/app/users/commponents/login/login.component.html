@@ -44,23 +44,47 @@
               <div class="grid gap-2">
                 <div class="grid gap-1">
                   <label for="username" class="text-white">Username</label>
-                  <input type="username" id="username" formControlName="username" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 min-h-[44px]" placeholder="username" required autocapitalize="none" autocomplete="username" autocorrect="off">
+                  <input type="text" 
+                         id="username" 
+                         formControlName="username" 
+                         class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 min-h-[44px]" 
+                         placeholder="username" 
+                         autocapitalize="none" 
+                         autocomplete="username" 
+                         autocorrect="off"
+                         [class.border-red-500]="f['username'].invalid && (f['username'].dirty || f['username'].touched || submitted)">
+                  <div *ngIf="f['username'].invalid && (f['username'].dirty || f['username'].touched || submitted)" 
+                       class="text-red-500 text-sm">
+                    <div *ngIf="f['username'].errors?.['required']">Le nom d'utilisateur est requis</div>
+                    <div *ngIf="f['username'].errors?.['minlength']">Le nom d'utilisateur doit contenir au moins 3 caractères</div>
+                  </div>
 
                   <label for="password" class="text-white mt-2">Password</label>
-                  <input type="password" id="password" formControlName="password" class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 min-h-[44px]" placeholder="Password" required autocomplete="current-password">
+                  <input type="password" 
+                         id="password" 
+                         formControlName="password" 
+                         class="w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 min-h-[44px]" 
+                         placeholder="Password" 
+                         autocomplete="current-password"
+                         [class.border-red-500]="f['password'].invalid && (f['password'].dirty || f['password'].touched || submitted)">
+                  <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched || submitted)" 
+                       class="text-red-500 text-sm">
+                    <div *ngIf="f['password'].errors?.['required']">Le mot de passe est requis</div>
+                    <div *ngIf="f['password'].errors?.['minlength']">Le mot de passe doit contenir au moins 8 caractères</div>
+                  </div>
                 </div>
 
-                <button type="submit" class="w-full bg-white text-zinc-950 hover:bg-white/90 active:bg-white/80 flex items-center justify-center rounded-lg px-4 py-4 text-base font-medium mt-6">
+                <button type="submit" 
+                        [disabled]="loginForm.invalid && submitted"
+                        class="w-full bg-white text-zinc-950 hover:bg-white/90 active:bg-white/80 flex items-center justify-center rounded-lg px-4 py-4 text-base font-medium mt-6 disabled:bg-gray-400 disabled:cursor-not-allowed">
                   Sign In
                 </button>
               </div>
             </form>
 
             <!-- Liens supplémentaires -->
-            <p><a routerLink="/forgot-password" class="font-medium text-white text-sm">Forgot your password?</a></p>
-<!--            <p><a routerLink="/username-signin" class="font-medium text-white text-sm">Sign in via magic link</a></p>-->
-            <p><a routerLink="/register" class="font-medium text-white text-sm">Don't have an account? Sign up</a></p>
-          
+            <p><a routerLink="/forgot-password" class="font-medium text-white text-sm hover:underline">Forgot your password?</a></p>
+            <p><a routerLink="/register" class="font-medium text-white text-sm hover:underline">Don't have an account? Sign up</a></p>
           </div>
         </div>
       </div>

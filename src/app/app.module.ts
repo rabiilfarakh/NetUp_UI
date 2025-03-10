@@ -9,6 +9,7 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { RouterModule } from '@angular/router';
 import { AuthInterceptor } from './users/auth/interceptor/auth.interceptor'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr'; 
 
 @NgModule({
   declarations: [
@@ -21,6 +22,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EffectsModule.forRoot([]),
     RouterModule,
     BrowserAnimationsModule,
+
+    ToastrModule.forRoot({ 
+      timeOut: 1000, 
+      positionClass: 'toast-top-right',
+      preventDuplicates: true, 
+      progressBar: true,
+      closeButton: true, 
+    }),
   ],
   providers: [
     provideClientHydration(withEventReplay()),

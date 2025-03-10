@@ -4,6 +4,7 @@ import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
 import { CommunityService } from '../../../community/service/community.service';
 import { CommunityDTORes } from '../../../community/model/community.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   standalone: false,
@@ -14,14 +15,13 @@ import { CommunityDTORes } from '../../../community/model/community.model';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   communities: CommunityDTORes[] = [];
-  successMessage: string | null = null; 
-  errorMessage: string | null = null; 
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private communityService: CommunityService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService 
   ) {
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
@@ -55,22 +55,19 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.userService.registerUser(this.registerForm.value).subscribe({
         next: (res) => {
-          this.successMessage = 'Registration successful!'; 
-          this.errorMessage = null; 
-
-
+          this.toastr.success('Registration successful!', 'Success'); 
           setTimeout(() => {
             this.router.navigateByUrl('/login');
-          }, 3000);
+          }, 1500); 
         },
         error: (err) => {
-          this.errorMessage = 'Registration failed. Please try again.';
-          this.successMessage = null; 
+          this.toastr.error('Registration failed. Please try again.', 'Error');
           console.error('Registration failed', err);
         }
       });
     } else {
       this.registerForm.markAllAsTouched();
+      this.toastr.warning('Please fill in all required fields correctly.', 'Warning'); 
     }
   }
 }

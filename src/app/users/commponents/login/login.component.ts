@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../auth/service/auth.service';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-login',
@@ -14,18 +14,19 @@ import { AuthService } from '../../auth/service/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  errorMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService 
   ) {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required]],  
+      username: ['', [Validators.required, Validators.minLength(3)]],  
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
+
   ngOnInit(): void {}
 
   get f() {
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     if (this.loginForm.invalid) {
+      this.toastr.warning('Veuillez remplir correctement tous les champs', 'Attention');
       return;
     }
 
@@ -48,17 +50,23 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         if (response.token) {
           this.authService.saveToken(response.token, response.role);
-
-          if(response.role == "ROLE_USER"){
-            this.router.navigate(['/article/home']);
-          }else{
-            console.log(response)
-            this.router.navigate(['/dashboard']);
-          }
+          this.toastr.success('Connexion réussie !', 'Succès');
+          
+          setTimeout(() => {
+            if (response.role === "ROLE_USER") {
+              this.router.navigate(['/article/home']);
+            } else {
+              this.router.navigate(['/dashboard']);
+            }
+          }, 1500); 
         }
       },
       error: (error: HttpErrorResponse) => {
-        this.errorMessage = 'Échec de connexion. Vérifiez vos identifiants.';
+        let errorMsg = 'Échec de connexion. Vérifiez vos identifiants.';
+        if (error.status === 401) {
+          errorMsg = 'Nom d\'utilisateur ou mot de passe incorrect';
+        }
+        this.toastr.error(errorMsg, 'Erreur');
         console.error('Erreur de connexion:', error);
       }
     });
