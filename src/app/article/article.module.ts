@@ -7,6 +7,7 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HomeComponent } from './components/home/home.component';
     ArticleRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     HomeComponent,

@@ -1,429 +1,232 @@
 <div class="min-h-screen bg-white text-gray-800">
-    <!-- Header moderne et minimaliste -->
-    <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
-      <div class="container mx-auto px-4 py-4">
-        <div class="flex justify-between items-center">
-          <!-- Logo -->
-          <a href="/" class="flex items-center">
-            <span class="text-2xl font-bold">Net<span class="text-gray-800">Up</span></span>
-          </a>
-  
-          <!-- Navigation principale - Desktop -->
-          <nav class="hidden md:flex items-center space-x-8">
-            <a *ngFor="let item of navItems" 
-               [href]="item.url" 
-               class="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200"
-               [ngClass]="{'text-gray-900 font-semibold': item.active}">
-              {{item.name}}
-            </a>
-          </nav>
-  
-          <!-- Actions - Desktop -->
-          <div class="hidden md:flex items-center space-x-4">
-            <a href="#" class="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200">Connexion</a>
-            <a routerLink="/profile" class="px-5 py-2 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all duration-200">
-              Profile
-            </a>
-          </div>
-  
-          <!-- Menu mobile toggle -->
-          <button (click)="toggleMobileMenu()" class="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200">
-            <svg *ngIf="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg *ngIf="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-  
-        <!-- Menu mobile -->
-        <div *ngIf="mobileMenuOpen" class="md:hidden mt-4" [@slideInOut]>
-          <div class="flex flex-col space-y-3 py-4">
-            <a *ngFor="let item of navItems" 
-               [href]="item.url" 
-               class="px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
-               [ngClass]="{'bg-gray-50 text-gray-900 font-semibold': item.active}">
-              {{item.name}}
-            </a>
-            <div class="border-t border-gray-100 my-2 pt-2">
-              <a href="#" class="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200">
-                Connexion
-              </a>
-              <a href="#" class="block px-3 py-2 mt-2 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors duration-200 text-center">
-                Inscription
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-  
-    <!-- Hero Section moderne -->
-    <section class="pt-32 pb-20 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <div class="md:w-1/2 space-y-6" [@fadeInUp]>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Partagez vos idées sur <span class="text-gray-900 relative">
-                NetUp
-                <span class="absolute bottom-1 left-0 w-full h-1 bg-gray-200"></span>
-              </span>
-            </h1>
-            <p class="text-xl text-gray-600 max-w-xl">
-              Rejoignez une communauté dynamique où chaque voix compte. Découvrez, partagez et connectez-vous.
-            </p>
-            <div class="flex flex-wrap gap-4 pt-4">
-              <a href="#articles" class="px-8 py-3 bg-gray-900 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:bg-gray-800 transition-all duration-300">
-                Explorer les articles
-              </a>
-              <a href="#" class="px-8 py-3 bg-white text-gray-900 font-medium rounded-full shadow-md hover:shadow-lg border border-gray-200 transition-all duration-300">
-                Créer un compte
-              </a>
-            </div>
-          </div>
-          <div class="md:w-1/2 flex justify-center" [@float]>
-            <div class="relative">
-              <div class="absolute -top-6 -right-6 w-64 h-64 bg-gray-100 rounded-full"></div>
-              <img src="assets/hero.png" alt="NetUp Community" class="relative z-10 max-w-full h-auto rounded-2xl shadow-xl">
-              <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-200 rounded-full"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- Section de statistiques -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div class="space-y-2">
-            <p class="text-4xl font-bold text-gray-900">10K+</p>
-            <p class="text-gray-600">Utilisateurs actifs</p>
-          </div>
-          <div class="space-y-2">
-            <p class="text-4xl font-bold text-gray-900">5K+</p>
-            <p class="text-gray-600">Articles publiés</p>
-          </div>
-          <div class="space-y-2">
-            <p class="text-4xl font-bold text-gray-900">15K+</p>
-            <p class="text-gray-600">Commentaires</p>
-          </div>
-          <div class="space-y-2">
-            <p class="text-4xl font-bold text-gray-900">98%</p>
-            <p class="text-gray-600">Satisfaction</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- Section Articles avec design épuré -->
-    <section id="articles" class="py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16" [@fadeIn]>
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Découvrez nos articles</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explorez les dernières publications de notre communauté et rejoignez la conversation.
+  <!-- Header moderne et minimaliste -->
+  <app-header></app-header>
+
+  <!-- Hero Section moderne -->
+  <section class="pt-32 pb-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2 space-y-6" [@fadeInUp]>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Partagez vos idées sur <span class="text-gray-900 relative">
+              NetUp
+              <span class="absolute bottom-1 left-0 w-full h-1 bg-gray-200"></span>
+            </span>
+          </h1>
+          <p class="text-xl text-gray-600 max-w-xl">
+            Rejoignez une communauté dynamique où chaque voix compte. Découvrez, partagez et connectez-vous.
           </p>
-        </div>
-  
-        <!-- Filtres et recherche -->
-        <div class="mb-12 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div class="relative w-full sm:w-64">
-            <input 
-              type="text" 
-              [(ngModel)]="searchTerm" 
-              placeholder="Rechercher un article..." 
-              class="w-full px-4 py-3 border border-gray-200 rounded-full focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-colors duration-200"
-            >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-          
-          <div class="flex items-center space-x-2">
-            <span class="text-gray-600">Trier par:</span>
-            <select 
-              [(ngModel)]="sortOption" 
-              (change)="sortArticles()"
-              class="px-4 py-2 border border-gray-200 rounded-full focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-colors duration-200"
-            >
-              <option value="recent">Plus récents</option>
-              <option value="popular">Plus populaires</option>
-              <option value="comments">Plus commentés</option>
-            </select>
-          </div>
-        </div>
-  
-        <!-- Loader -->
-        <div *ngIf="loading" class="flex justify-center items-center py-12">
-          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
-        </div>
-  
-        <!-- Message d'erreur -->
-        <div *ngIf="error" class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded-md">
-          <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <p class="text-red-700">{{ error }}</p>
-          </div>
-        </div>
-  
-        <!-- Grille d'articles -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div *ngFor="let article of filteredArticles; let i = index" 
-               class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
-               [ngClass]="{'animate-fade-in-up': true}"
-               [@cardAnimation]="{value: '', params: {delay: i * 100}}">
-            
-            <!-- Image de couverture -->
-            <div class="relative h-48 overflow-hidden">
-              <img [src]="article.photo" [alt]="article.title" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-              <div class="absolute top-4 left-4">
-                <!-- <span class="px-3 py-1 bg-white text-gray-800 text-xs font-medium rounded-full shadow-sm">{{ article.category }}</span> -->
-              </div>
-            </div>
-            
-            <!-- Contenu de l'article -->
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <img [src]="article.user?.username" alt="Avatar" class="w-10 h-10 rounded-full mr-3 border-2 border-white shadow">
-                <div>
-                  <p class="text-sm font-medium text-gray-900">{{ article.user?.username }}</p>
-                  <p class="text-xs text-gray-500">{{ formatDate(article.date) }}</p>
-                </div>
-              </div>
-              
-              <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">{{ article.title }}</h3>
-              <p class="text-gray-600 mb-4 line-clamp-3">{{ article.description }}</p>
-              
-              <!-- Interactions -->
-              <div class="flex justify-between items-center pt-4 border-t border-gray-100">
-                <button (click)="likeArticle(article.id)" class="flex items-center space-x-1 text-gray-600 hover:text-gray-900 transition-colors duration-200">
-                  <svg [ngClass]="{'text-red-500 fill-current': isLiked(article.id)}" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" [class.animate-pulse]="isLiked(article.id)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                  <span>{{ likes[article.id] || 0 }}</span>
-                </button>
-                
-                <button (click)="toggleComments(article.id)" class="flex items-center space-x-1 text-gray-600 hover:text-gray-900 transition-colors duration-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                  <span>{{ (comments[article.id] || []).length }}</span>
-                </button>
-                
-                <button (click)="shareArticle(article)" class="flex items-center space-x-1 text-gray-600 hover:text-gray-900 transition-colors duration-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                  </svg>
-                  <span>Partager</span>
-                </button>
-              </div>
-              
-              <!-- Section commentaires -->
-              <div *ngIf="showComments[article.id]" class="mt-4 pt-4 border-t border-gray-100" [@expandCollapse]>
-                <h4 class="font-medium text-gray-900 mb-2">Commentaires</h4>
-                
-                <div *ngIf="(comments[article.id] || []).length === 0" class="text-sm text-gray-500 italic mb-3">
-                  Aucun commentaire pour le moment. Soyez le premier à commenter !
-                </div>
-                
-                <div *ngFor="let comment of comments[article.id] || []" class="mb-3 p-3 bg-gray-50 rounded-lg">
-                  <p class="text-sm text-gray-700">{{ comment }}</p>
-                </div>
-                
-                <div class="mt-3 flex gap-2">
-                  <input 
-                    [(ngModel)]="newComment[article.id]" 
-                    placeholder="Ajouter un commentaire..." 
-                    class="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-colors duration-200"
-                  >
-                  <button 
-                    (click)="addComment(article.id)" 
-                    [disabled]="!(newComment[article.id] || '').trim()"
-                    [ngClass]="{'opacity-50 cursor-not-allowed': !(newComment[article.id] || '').trim()}"
-                    class="px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium rounded-lg transition-colors duration-200">
-                    Envoyer
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Message si aucun article -->
-        <div *ngIf="filteredArticles.length === 0 && !loading" class="text-center py-12">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <h3 class="text-xl font-medium text-gray-900 mb-2">Aucun article trouvé</h3>
-          <p class="text-gray-600">Essayez de modifier vos critères de recherche ou revenez plus tard.</p>
-        </div>
-  
-        <!-- Pagination -->
-        <div *ngIf="filteredArticles.length > 0" class="mt-12 flex justify-center">
-          <nav class="flex items-center space-x-2">
-            <button 
-              [disabled]="currentPage === 1"
-              [ngClass]="{'opacity-50 cursor-not-allowed': currentPage === 1}"
-              (click)="changePage(currentPage - 1)"
-              class="px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors duration-200">
-              Précédent
-            </button>
-            
-            <div *ngFor="let page of getPageNumbers()" class="flex items-center">
-              <button 
-                *ngIf="page !== '...'"
-                [ngClass]="{'bg-gray-900 text-white': currentPage === page, 'bg-white text-gray-700': currentPage !== page}"
-                (click)="changePage(+page)"
-                class="px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors duration-200">
-                {{ page }}
-              </button>
-              <span *ngIf="page === '...'" class="px-2 text-gray-500">...</span>
-            </div>
-            
-            <button 
-              [disabled]="currentPage === totalPages"
-              [ngClass]="{'opacity-50 cursor-not-allowed': currentPage === totalPages}"
-              (click)="changePage(currentPage + 1)"
-              class="px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors duration-200">
-              Suivant
-            </button>
-          </nav>
-        </div>
-      </div>
-    </section>
-  
-    <!-- Section Fonctionnalités -->
-    <section class="py-20 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Pourquoi choisir NetUp ?</h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Découvrez les fonctionnalités qui font de NetUp la plateforme idéale pour partager vos idées.
-          </p>
-        </div>
-  
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
-            <div class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold mb-3">Partagez vos idées</h3>
-            <p class="text-gray-600">Publiez facilement vos articles et partagez vos connaissances avec une communauté engagée.</p>
-          </div>
-  
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
-            <div class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold mb-3">Connectez-vous</h3>
-            <p class="text-gray-600">Rejoignez une communauté de passionnés et échangez avec des personnes partageant vos intérêts.</p>
-          </div>
-  
-          <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
-            <div class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold mb-3">Découvrez</h3>
-            <p class="text-gray-600">Explorez des contenus de qualité et restez informé des dernières tendances dans vos domaines d'intérêt.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    <!-- Call to Action -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto bg-gray-900 rounded-2xl overflow-hidden shadow-xl">
-          <div class="flex flex-col md:flex-row">
-            <div class="md:w-1/2 p-10 md:p-12 flex flex-col justify-center">
-              <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Rejoignez notre communauté</h2>
-              <p class="text-gray-300 mb-8">Créez votre compte dès aujourd'hui et commencez à partager vos idées avec le monde.</p>
-              <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#" class="px-6 py-3 bg-white text-gray-900 font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-center">
-                  Créer un compte
-                </a>
-                <a href="#" class="px-6 py-3 bg-transparent border border-white text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-center">
-                  En savoir plus
-                </a>
-              </div>
-            </div>
-            <div class="md:w-1/2 bg-gray-800 p-10 md:p-12 flex items-center justify-center">
-              <div class="relative">
-                <div class="absolute -top-4 -left-4 w-20 h-20 bg-gray-700 rounded-full"></div>
-                <img src="assets/cta-image.jpg" alt="Join NetUp" class="relative z-10 max-w-full h-auto rounded-lg shadow-lg">
-                <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-gray-700 rounded-full"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  
- <!-- Footer -->
- <footer class="bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="md:col-span-2">
-          <a href="/" class="flex items-center space-x-1 mb-4">
-            <span class="font-bold text-2xl bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent">Net</span>
-            <span class="text-2xl text-gray-500 dark:text-gray-300">Up</span>
-          </a>
-          <p class="text-gray-600 dark:text-gray-300 mb-4 max-w-md">
-            NetUp est une plateforme communautaire où chacun peut partager ses idées, découvrir de nouveaux contenus et se connecter avec d'autres passionnés.
-          </p>
-          <div class="flex space-x-4 mt-4">
-            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-              </svg>
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="#communities" class="px-8 py-3 bg-gray-900 text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:bg-gray-800 transition-all duration-300">
+              Explorer les communautés
             </a>
-            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </a>
-            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-              </svg>
+            <a href="/register" class="px-8 py-3 bg-white text-gray-900 font-medium rounded-full shadow-md hover:shadow-lg border border-gray-200 transition-all duration-300">
+              Créer un compte
             </a>
           </div>
         </div>
-        
-        <div>
-          <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-4">Liens rapides</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Accueil</a></li>
-            <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Articles</a></li>
-            <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">À propos</a></li>
-            <li><a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Contact</a></li>
-          </ul>
+        <div class="md:w-1/2 flex justify-center" [@float]>
+          <div class="relative">
+            <div class="absolute -top-6 -right-6 w-64 h-64 bg-gray-100 rounded-full"></div>
+            <img src="assets/hero.png" alt="NetUp Community" class="relative z-10 max-w-full h-auto rounded-2xl shadow-xl">
+            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-200 rounded-full"></div>
+          </div>
         </div>
-        
-        <div>
-          <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-4">Restez informé</h3>
-          <p class="text-gray-600 dark:text-gray-300 mb-4">Abonnez-vous à notre newsletter pour recevoir les dernières actualités.</p>
-          <form class="flex flex-col sm:flex-row gap-2">
-            <input type="email" placeholder="Votre email" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white transition-colors duration-200">
-            <button type="submit" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors duration-200">S'abonner</button>
-          </form>
-        </div>
-      </div>
-      
-      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
-        <p class="text-gray-600 dark:text-gray-400">
-          &copy; {{ currentYear }} NetUp. Tous droits réservés.
-        </p>
       </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- Section de statistiques -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-2">
+          <p class="text-4xl font-bold text-gray-900">10K+</p>
+          <p class="text-gray-600">Utilisateurs actifs</p>
+        </div>
+        <div class="space-y-2">
+          <p class="text-4xl font-bold text-gray-900">5K+</p>
+          <p class="text-gray-600">Articles publiés</p>
+        </div>
+        <div class="space-y-2">
+          <p class="text-4xl font-bold text-gray-900">15K+</p>
+          <p class="text-gray-600">Commentaires</p>
+        </div>
+        <div class="space-y-2">
+          <p class="text-4xl font-bold text-gray-900">98%</p>
+          <p class="text-gray-600">Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Communautés avec design épuré -->
+  <section id="communities" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16" [@fadeIn]>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Découvrez nos communautés</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Explorez les différentes communautés de notre plateforme et rejoignez celles qui vous inspirent.
+        </p>
+      </div>
+
+      <!-- Filtres et recherche -->
+      <div class="mb-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="relative w-full sm:w-64">
+          <input 
+            type="text" 
+            [(ngModel)]="searchTerm" 
+            (ngModelChange)="applyFilters()"
+            placeholder="Rechercher une communauté..." 
+            class="w-full px-4 py-3 border border-gray-200 rounded-full focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-colors duration-200"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        
+        <div class="flex items-center space-x-2">
+          <span class="text-gray-600">Trier par:</span>
+          <select 
+            [(ngModel)]="sortOption" 
+            (change)="sortCommunities()"
+            class="px-4 py-2 border border-gray-200 rounded-full focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-colors duration-200"
+          >
+            <option value="recent">Plus récentes</option>
+            <option value="popular">Plus populaires</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Loader -->
+      <div *ngIf="loading" class="flex justify-center items-center py-12">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
+      </div>
+
+      <!-- Message d'erreur -->
+      <div *ngIf="error" class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded-md">
+        <div class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="text-red-700">{{ error }}</p>
+        </div>
+      </div>
+
+      <!-- Grille de communautés -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let community of filteredCommunities" class="rounded-lg border bg-card text-card-foreground shadow-sm h-full flex flex-col hover:shadow-md transition-shadow">
+          <!-- Title Section -->
+          <div class="flex flex-col space-y-1.5 p-6">
+            <h3 class="font-semibold tracking-tight text-xl">
+              {{ community.name }}
+            </h3>
+          </div>
+          
+          <!-- Description Section -->
+          <div class="p-6 pt-0 flex-grow">
+            <p class="text-gray-600 line-clamp-3">
+              {{ community.description || "Pas de description disponible" }}
+            </p>
+          </div>
+          
+          <!-- Button Section -->
+          <div class="flex items-center p-6 pt-0">
+            <a class="w-full" [routerLink]="['/communities', community.id]">
+              <button class=" cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">
+                Voir la communauté
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message si aucune communauté -->
+      <div *ngIf="filteredCommunities.length === 0 && !loading" class="text-center py-12">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 class="text-xl font-medium text-gray-900 mb-2">Aucune communauté trouvée</h3>
+        <p class="text-gray-600">Essayez de modifier vos critères de recherche ou revenez plus tard.</p>
+      </div>
+
+      <!-- Pagination -->
+      <div *ngIf="filteredCommunities.length > 0" class="mt-12 flex justify-center">
+        <nav class="flex items-center space-x-2">
+          <button 
+            [disabled]="currentPage === 1"
+            [ngClass]="{'opacity-50 cursor-not-allowed': currentPage === 1}"
+            (click)="changePage(currentPage - 1)"
+            class="px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+            Précédent
+          </button>
+          
+          <div *ngFor="let page of getPageNumbers()" class="flex items-center">
+            <button 
+              *ngIf="page !== '...'"
+              [ngClass]="{'bg-gray-900 text-white': currentPage === page, 'bg-white text-gray-700': currentPage !== page}"
+              (click)="changePage(+page)"
+              class="px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors duration-200">
+              {{ page }}
+            </button>
+            <span *ngIf="page === '...'" class="px-2 text-gray-500">...</span>
+          </div>
+          
+          <button 
+            [disabled]="currentPage === totalPages"
+            [ngClass]="{'opacity-50 cursor-not-allowed': currentPage === totalPages}"
+            (click)="changePage(currentPage + 1)"
+            class="px-4 py-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+            Suivant
+          </button>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Fonctionnalités -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Pourquoi choisir NetUp ?</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Découvrez les fonctionnalités qui font de NetUp la plateforme idéale pour partager vos idées.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Gardez cette section telle quelle ou adaptez-la si nécessaire -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-gray-900 rounded-2xl overflow-hidden shadow-xl">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/2 p-10 md:p-12 flex flex-col justify-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Rejoignez notre communauté</h2>
+            <p class="text-gray-300 mb-8">Créez votre compte dès aujourd'hui et commencez à partager vos idées avec le monde.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/register" class="px-6 py-3 bg-white text-gray-900 font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                Créer un compte
+              </a>
+              <a href="#" class="px-6 py-3 bg-transparent border border-white text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-center">
+                En savoir plus
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/2 bg-gray-800 p-10 md:p-12 flex items-center justify-center">
+            <div class="relative">
+              <div class="absolute -top-4 -left-4 w-20 h-20 bg-gray-700 rounded-full"></div>
+              <img src="assets/cta-image.jpg" alt="Join NetUp" class="relative z-10 max-w-full h-auto rounded-lg shadow-lg">
+              <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-gray-700 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</div>
