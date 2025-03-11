@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { trigger, transition, style, animate, state } from "@angular/animations";
-import { ToastrService } from "ngx-toastr"; // Ajout de ToastrService
-import { CommunityService } from "../../../community/service/community.service"; // Import du service
+import { ToastrService } from "ngx-toastr";
+import { CommunityService } from "../../../community/service/community.service"; 
 import { CommunityDTORes } from "../../../community/model/community.model";
 
 @Component({
@@ -45,8 +45,8 @@ export class HomeComponent implements OnInit {
   totalPages = 1;
 
   constructor(
-    private communityService: CommunityService, // Injection du CommunityService
-    private toastr: ToastrService // Injection de ToastrService
+    private communityService: CommunityService, 
+    private toastr: ToastrService 
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
         this.communities = communities;
         this.applyFilters();
         this.loading = false;
-        this.toastr.success("Communautés chargées avec succès", "Succès");
+        //this.toastr.success("Communautés chargées avec succès", "Succès");
       },
       error: (err) => {
         this.error = "Erreur lors du chargement des communautés";

@@ -6,7 +6,7 @@ import { CommunityService } from '../../../community/service/community.service';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/service/auth.service';
-
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   standalone: false,
@@ -48,7 +48,8 @@ export class DashboardComponent implements OnInit {
     private userService: UserService,
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService
   ) {
     this.communityForm = this.fb.group({
       name: ['', Validators.required],
@@ -89,6 +90,7 @@ export class DashboardComponent implements OnInit {
         this.calculateStats();
       },
       error: (error) => {
+        this.toastr.error('Erreur lors du chargement des communautés', 'Erreur');
         console.error('Erreur lors du chargement des communautés', error);
       }
     });
@@ -118,7 +120,10 @@ export class DashboardComponent implements OnInit {
   }
 
   saveCommunity(): void {
-    if (this.communityForm.invalid) return;
+    if (this.communityForm.invalid) {
+      this.toastr.warning('Veuillez remplir tous les champs requis', 'Attention');
+      return;
+    }
     
     const communityData: CommunityDTOReq = this.communityForm.value;
     
@@ -127,8 +132,10 @@ export class DashboardComponent implements OnInit {
         next: () => {
           this.loadCommunities();
           this.closeCommunityModal();
+          this.toastr.success('Communauté mise à jour avec succès', 'Succès');
         },
         error: (error) => {
+          this.toastr.error('Erreur lors de la mise à jour de la communauté', 'Erreur');
           console.error('Erreur lors de la mise à jour de la communauté', error);
         }
       });
@@ -137,8 +144,10 @@ export class DashboardComponent implements OnInit {
         next: () => {
           this.loadCommunities();
           this.closeCommunityModal();
+          this.toastr.success('Communauté créée avec succès', 'Succès');
         },
         error: (error) => {
+          this.toastr.error('Erreur lors de la création de la communauté', 'Erreur');
           console.error('Erreur lors de la création de la communauté', error);
         }
       });
@@ -150,8 +159,10 @@ export class DashboardComponent implements OnInit {
       this.communityService.deleteCommunity(id).subscribe({
         next: () => {
           this.loadCommunities();
+          this.toastr.success('Communauté supprimée avec succès', 'Succès');
         },
         error: (error) => {
+          this.toastr.error('Erreur lors de la suppression de la communauté', 'Erreur');
           console.error('Erreur lors de la suppression de la communauté', error);
         }
       });
@@ -166,6 +177,7 @@ export class DashboardComponent implements OnInit {
         this.calculateStats();
       },
       error: (error) => {
+        this.toastr.error('Erreur lors du chargement des utilisateurs', 'Erreur');
         console.error('Erreur lors du chargement des utilisateurs', error);
       }
     });
@@ -200,7 +212,10 @@ export class DashboardComponent implements OnInit {
   }
 
   saveUser(): void {
-    if (this.userForm.invalid) return;
+    if (this.userForm.invalid) {
+      this.toastr.warning('Veuillez remplir tous les champs requis', 'Attention');
+      return;
+    }
     
     const formData = this.userForm.value;
     
@@ -218,8 +233,10 @@ export class DashboardComponent implements OnInit {
         next: () => {
           this.loadUsers();
           this.closeUserModal();
+          this.toastr.success('Utilisateur mis à jour avec succès', 'Succès');
         },
         error: (error) => {
+          this.toastr.error('Erreur lors de la mise à jour de l\'utilisateur', 'Erreur');
           console.error('Erreur lors de la mise à jour de l\'utilisateur', error);
         }
       });
@@ -230,8 +247,10 @@ export class DashboardComponent implements OnInit {
         next: () => {
           this.loadUsers();
           this.closeUserModal();
+          this.toastr.success('Utilisateur créé avec succès', 'Succès');
         },
         error: (error) => {
+          this.toastr.error('Erreur lors de la création de l\'utilisateur', 'Erreur');
           console.error('Erreur lors de la création de l\'utilisateur', error);
         }
       });
@@ -243,8 +262,10 @@ export class DashboardComponent implements OnInit {
       this.userService.deleteUser(id).subscribe({
         next: () => {
           this.loadUsers();
+          this.toastr.success('Utilisateur supprimé avec succès', 'Succès');
         },
         error: (error) => {
+          this.toastr.error('Erreur lors de la suppression de l\'utilisateur', 'Erreur');
           console.error('Erreur lors de la suppression de l\'utilisateur', error);
         }
       });
