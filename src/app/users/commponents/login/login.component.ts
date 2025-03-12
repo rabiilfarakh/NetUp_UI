@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
           
           setTimeout(() => {
             if (response.role === "ROLE_USER") {
-              this.router.navigate(['/article/home']);
+              this.router.navigate(['/articles/home']);
             } else {
               this.router.navigate(['/dashboard']);
             }

@@ -1,4 +1,5 @@
-// DTO pour la requête (envoyée au serveur)
+import { CommentDTORes } from "../../comment/model/comment.model";
+
 export interface ArticleDTOReq {
   title: string;
   description: string;
@@ -27,5 +28,8 @@ export interface ArticleDTORes {
       description: string;
       quantity: number | null;
     };
-  }| null;
+  } | null;
+  comments: CommentDTORes[]; 
 }
+
+

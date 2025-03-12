@@ -1,0 +1,278 @@
+<app-header></app-header>
+<!-- Section principale avec fond blanc et dégradé -->
+<section class="relative py-16 md:py-24 overflow-hidden bg-white">
+  
+    <!-- Arrière-plan avec dégradé et effets de flou -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-950/30 dark:to-pink-950/30 -z-10"></div>
+    <div class="absolute top-20 left-10 w-64 h-64 bg-purple-400/10 dark:bg-purple-400/5 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-400/10 dark:bg-pink-400/5 rounded-full blur-3xl -z-10"></div>
+  
+    <!-- Conteneur principal centré -->
+    <div class="container mx-auto px-4 text-center relative">
+      
+      <!-- Badge "Insights & Perspectives" -->
+      <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent mb-4 bg-white dark:bg-slate-800 text-purple-600 dark:text-purple-400 hover:bg-white dark:hover:bg-slate-800" data-v0-t="badge">
+        Insights &amp; Perspectives
+      </div>
+  
+      <!-- Titre principal avec dégradé de texte -->
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+        Discover Thought-Provoking Content
+      </h1>
+  
+      <!-- Paragraphe de description -->
+      <p class="text-lg text-black max-w-2xl mx-auto mb-10">
+        Explore articles, share ideas, and engage in meaningful discussions with our community of readers and writers.
+      </p>
+  
+      <!-- Boutons d'action -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-11 px-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0">
+          Start Reading
+        </button>
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8 rounded-full border-slate-200 dark:border-slate-700">
+          Become a Contributor
+        </button>
+      </div>
+  
+    <!-- Grille de statistiques -->
+    <div class="grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto">
+    
+        <!-- Statistique 1 : Articles -->
+        <div class="bg-white backdrop-blur-sm rounded-xl p-4 shadow-sm text-black dark:border-slate-700/50">
+        <p class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">500+</p>
+        <p class="text-black text-sm md:text-base">Articles</p> <!-- Texte forcé en noir -->
+        </div>
+    
+        <!-- Statistique 2 : Lecteurs -->
+        <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4 shadow-sm border-slate-200/50 dark:border-slate-700/50">
+        <p class="text-2xl md:text-3xl font-bold text-pink-600 dark:text-pink-400">50K+</p>
+        <p class="text-black text-sm md:text-base">Readers</p> <!-- Texte forcé en noir -->
+        </div>
+    
+        <!-- Statistique 3 : Contributeurs -->
+        <div class="bg-white backdrop-blur-sm rounded-xl p-4 shadow-sm border-slate-200/50 dark:border-slate-700/50">
+        <p class="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">100+</p>
+        <p class="text-black text-sm md:text-base">Contributors</p> <!-- Texte forcé en noir -->
+        </div>
+    </div>
+    </div>
+  </section>
+  <!-- Section principale avec espacement et conteneur centré -->
+<section class="py-16 container mx-auto px-4">
+  
+    <!-- En-tête avec titre et bouton "Trending" -->
+    <div class="flex justify-between items-center mb-10">
+      <!-- Titre avec dégradé de texte -->
+      <h2 class="text-2xl md:text-3xl font-bold">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">Featured Article</span>
+      </h2>
+      
+      <!-- Bouton "Trending" avec icône -->
+      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-10 px-4 py-2 text-purple-600 hover:text-purple-700">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up h-4 w-4 mr-2">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+          <polyline points="16 7 22 7 22 13"></polyline>
+        </svg>
+        Trending
+      </button>
+    </div>
+  
+    <!-- Carte de l'article en vedette -->
+    <div class="group bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300">
+      <!-- Grille pour la mise en page responsive -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Section de l'image avec overlay et badges -->
+        <div class="relative h-64 lg:h-full overflow-hidden">
+          <!-- Image de l'article -->
+          <img alt="The Future of Remote Work: Balancing Flexibility and Collaboration" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="/placeholder.svg?height=600&amp;width=1200">
+          
+          <!-- Overlay dégradé pour l'image -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+          
+          <!-- Badges pour les catégories -->
+          <div class="absolute bottom-4 left-4 flex flex-wrap gap-2">
+            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm" data-v0-t="badge">Remote Work</div>
+            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm" data-v0-t="badge">Future of Work</div>
+            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm" data-v0-t="badge">Collaboration</div>
+          </div>
+        </div>
+  
+        <!-- Section du contenu de l'article -->
+        <div class="p-6 lg:p-8 flex flex-col">
+          <!-- Contenu principal -->
+          <div class="flex-1">
+            <!-- Badge "Featured" -->
+            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent mb-4 bg-purple-100 text-purple-700 hover:bg-purple-100" data-v0-t="badge">Featured</div>
+            
+            <!-- Titre de l'article avec effet de survol -->
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 group-hover:text-purple-600 transition-colors">
+              <a href="/article/the-future-of-remote-work:-balancing-flexibility-and-collaboration">The Future of Remote Work: Balancing Flexibility and Collaboration</a>
+            </h2>
+            
+            <!-- Description de l'article -->
+            <p class="text-slate-600 mb-6">As remote work becomes the new normal, companies are finding innovative ways to maintain team cohesion while providing the flexibility employees have come to expect. This in-depth analysis explores the challenges and opportunities of hybrid work models.</p>
+            
+            <!-- Auteur de l'article -->
+            <div class="flex items-center mb-6">
+              <img alt="Alexandra Chen" class="h-12 w-12 rounded-full mr-4 object-cover" src="/placeholder.svg?height=100&amp;width=100">
+              <div>
+                <p class="font-medium">Alexandra Chen</p>
+                <p class="text-sm text-slate-500">Workplace Strategist</p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Métadonnées de l'article (date, temps de lecture, likes, commentaires) -->
+          <div class="flex items-center justify-between pt-6 border-t border-slate-200">
+            <div class="flex items-center text-sm text-slate-500">
+              <span>May 15, 2023</span>
+              <span class="mx-2">•</span>
+              <span>12 min read</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <!-- Likes -->
+              <div class="flex items-center text-slate-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart h-4 w-4 mr-1">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                </svg>
+                <span>218</span>
+              </div>
+              <!-- Commentaires -->
+              <div class="flex items-center text-slate-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square h-4 w-4 mr-1">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>42</span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Bouton "Read Full Article" -->
+          <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 px-4 py-2 mt-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 group">
+            Read Full Article
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 h-4 w-4 transition-transform group-hover:translate-x-1">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-16 relative overflow-hidden">
+    <!-- Arrière-plan avec dégradé et effets de flou -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-white -z-10"></div>
+    <div class="absolute top-40 right-20 w-72 h-72 bg-purple-400/10 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-20 left-20 w-60 h-60 bg-pink-400/10 rounded-full blur-3xl -z-10"></div>
+  
+    <!-- Conteneur principal -->
+    <div class="container mx-auto px-4">
+      <!-- En-tête avec titre et bouton "Filter" -->
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">Latest Articles</span>
+        </h2>
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-full border-slate-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-filter h-4 w-4 mr-2">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+          </svg>
+          Filter
+        </button>
+      </div>
+  
+      <!-- Onglets de filtrage -->
+      <div dir="ltr" data-orientation="horizontal" class="w-full mb-10">
+        <div role="tablist" aria-orientation="horizontal" class="h-10 items-center justify-center text-muted-foreground grid grid-cols-4 sm:grid-cols-6 mb-8 bg-slate-100 p-1 rounded-full w-full sm:w-auto" tabindex="0" data-orientation="horizontal" style="outline: none;">
+          <button type="button" role="tab" aria-selected="true" aria-controls="radix-:r0:-content-all" data-state="active" id="radix-:r0:-trigger-all" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-full data-[state=active]:bg-white" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">All</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r0:-content-technology" data-state="inactive" id="radix-:r0:-trigger-technology" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-full data-[state=active]:bg-white" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Technology</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r0:-content-business" data-state="inactive" id="radix-:r0:-trigger-business" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-full data-[state=active]:bg-white" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Business</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r0:-content-culture" data-state="inactive" id="radix-:r0:-trigger-culture" class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-full data-[state=active]:bg-white" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Culture</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r0:-content-science" data-state="inactive" id="radix-:r0:-trigger-science" class="items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-full data-[state=active]:bg-white hidden sm:block" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Science</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="radix-:r0:-content-health" data-state="inactive" id="radix-:r0:-trigger-health" class="items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-full data-[state=active]:bg-white hidden sm:block" tabindex="-1" data-orientation="horizontal" data-radix-collection-item="">Health</button>
+        </div>
+      </div>
+  
+      <!-- Grille d'articles -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <!-- Boucle sur les articles -->
+        <div *ngFor="let article of articles" class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="relative h-48 overflow-hidden">
+            <!-- Image de l'article -->
+            <img [src]="article.photo ||  '/placeholder.svg'" alt="{{ article.title }}" [routerLink]="['/articles', article.id]" class="cursor-pointer w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <!-- Badges (si disponibles) -->
+            <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+              <!-- <div *ngFor="let tag of article.tags" class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-black/30 text-white hover:bg-black/40 backdrop-blur-sm" data-v0-t="badge">
+                {{ tag }}
+              </div> -->
+            </div>
+          </div>
+          <div class="p-5">
+            <!-- Titre de l'article -->
+            <h3 class="font-bold text-xl mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
+              <a [routerLink]="['/article', article.id]">{{ article.title }}</a>
+            </h3>
+            <!-- Description de l'article -->
+            <p class="text-slate-600 text-sm mb-4 line-clamp-2">{{ article.description }}</p>
+            <!-- Auteur et date -->
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center">
+                <img [src]="article.user?.photo || '/placeholder.svg'" alt="{{ article.user?.username }}" class="h-8 w-8 rounded-full mr-2 object-cover">
+                <div>
+                  <p class="text-sm font-medium">{{ article.user?.username }}</p>
+                  <div class="flex items-center text-xs text-slate-500">
+                    <span>{{ article.date | date: 'dd/MM/yyyy' }}</span>
+                    <span class="mx-1">•</span>
+                    <span>5 min read</span> <!-- Durée de lecture statique (à adapter) -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Actions (likes, commentaires, etc.) -->
+            <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+              <div class="flex items-center gap-4">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 rounded-md p-0 h-auto text-slate-500 hover:text-pink-600 hover:bg-transparent" data-state="closed">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart h-5 w-5 mr-1">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                  </svg>
+                  <span>156</span> <!-- Nombre de likes statique (à adapter) -->
+                </button>
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 rounded-md p-0 h-auto text-slate-500 hover:text-purple-600 hover:bg-transparent" data-state="closed">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square h-5 w-5 mr-1">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <span>24</span> <!-- Nombre de commentaires statique (à adapter) -->
+                </button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-8 w-8 text-slate-500 hover:text-purple-600" data-state="closed">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark h-5 w-5">
+                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+                  </svg>
+                </button>
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-8 w-8 text-slate-500 hover:text-purple-600" data-state="closed">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 h-5 w-5">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+                    <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Bouton "Load More Articles" -->
+      <div class="text-center">
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8 rounded-full border-slate-200">
+          Load More Articles
+        </button>
+      </div>
+    </div>
+  </section>
+<app-footer></app-footer>
