@@ -8,26 +8,26 @@ import { ArticleService } from "./services/article.service";
   templateUrl: './article.component.html',
 })
 export class ArticleComponent implements OnInit {
-    articles: ArticleDTORes[] = []; // Liste des articles
-    isLoading: boolean = true; // Indicateur de chargement
+    articles: ArticleDTORes[] = []; 
+    isLoading: boolean = true; 
   
     constructor(private articleService: ArticleService) {}
   
     ngOnInit(): void {
-      this.loadArticles(); // Chargez les articles au démarrage du composant
+      this.loadArticles(); 
     }
   
-    // Méthode pour charger les articles
+    
     loadArticles(): void {
-      this.isLoading = true; // Activez l'indicateur de chargement
+      this.isLoading = true; 
       this.articleService.getAllArticles().subscribe({
         next: (data) => {
-          this.articles = data; // Affectez les articles récupérés
-          this.isLoading = false; // Désactivez l'indicateur de chargement
+          this.articles = data;
+          this.isLoading = false; 
         },
         error: (err) => {
           console.error('Erreur lors du chargement des articles :', err);
-          this.isLoading = false; // Désactivez l'indicateur de chargement en cas d'erreur
+          this.isLoading = false; 
         }
       });
     }
