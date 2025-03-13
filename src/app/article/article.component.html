@@ -12,7 +12,7 @@
       
       <!-- Badge "Insights & Perspectives" -->
       <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent mb-4 bg-white dark:bg-slate-800 text-purple-600 dark:text-purple-400 hover:bg-white dark:hover:bg-slate-800" data-v0-t="badge">
-        Insights &amp; Perspectives
+        Insights & Perspectives
       </div>
   
       <!-- Titre principal avec dégradé de texte -->
@@ -27,10 +27,10 @@
   
       <!-- Boutons d'action -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-11 px-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0">
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-11 px-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0">
           Start Reading
         </button>
-        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8 rounded-full border-slate-200 dark:border-slate-700">
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8 rounded-full border-slate-200 dark:border-slate-700">
           Become a Contributor
         </button>
       </div>
@@ -69,7 +69,7 @@
       </h2>
       
       <!-- Bouton "Trending" avec icône -->
-      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-10 px-4 py-2 text-purple-600 hover:text-purple-700">
+      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-10 px-4 py-2 text-purple-600 hover:text-purple-700">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up h-4 w-4 mr-2">
           <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
           <polyline points="16 7 22 7 22 13"></polyline>
@@ -86,7 +86,7 @@
         <!-- Section de l'image avec overlay et badges -->
         <div class="relative h-64 lg:h-full overflow-hidden">
           <!-- Image de l'article -->
-          <img alt="The Future of Remote Work: Balancing Flexibility and Collaboration" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="/placeholder.svg?height=600&amp;width=1200">
+          <img alt="image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" [src]="'/assets/img/' + featuredArticle?.photo ">
           
           <!-- Overlay dégradé pour l'image -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
@@ -108,18 +108,18 @@
             
             <!-- Titre de l'article avec effet de survol -->
             <h2 class="text-2xl md:text-3xl font-bold mb-4 group-hover:text-purple-600 transition-colors">
-              <a href="/article/the-future-of-remote-work:-balancing-flexibility-and-collaboration">The Future of Remote Work: Balancing Flexibility and Collaboration</a>
+              <a href="/article/the-future-of-remote-work:-balancing-flexibility-and-collaboration">{{featuredArticle?.title}}</a>
             </h2>
             
             <!-- Description de l'article -->
-            <p class="text-slate-600 mb-6">As remote work becomes the new normal, companies are finding innovative ways to maintain team cohesion while providing the flexibility employees have come to expect. This in-depth analysis explores the challenges and opportunities of hybrid work models.</p>
+            <p class="text-slate-600 mb-6">{{featuredArticle?.description}}</p>
             
             <!-- Auteur de l'article -->
             <div class="flex items-center mb-6">
-              <img alt="Alexandra Chen" class="h-12 w-12 rounded-full mr-4 object-cover" src="/placeholder.svg?height=100&amp;width=100">
+              <img alt="image" class="h-12 w-12 rounded-full mr-4 object-cover" [src]="'/assets/img/' + featuredArticle?.user?.photo" >
               <div>
-                <p class="font-medium">Alexandra Chen</p>
-                <p class="text-sm text-slate-500">Workplace Strategist</p>
+                <p class="font-medium">{{featuredArticle?.user?.username}}</p>
+                <p class="text-sm text-slate-500">{{featuredArticle?.user?.community?.name}}</p>
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@
           <!-- Métadonnées de l'article (date, temps de lecture, likes, commentaires) -->
           <div class="flex items-center justify-between pt-6 border-t border-slate-200">
             <div class="flex items-center text-sm text-slate-500">
-              <span>May 15, 2023</span>
+              <span>{{featuredArticle?.date}}</span>
               <span class="mx-2">•</span>
               <span>12 min read</span>
             </div>
@@ -144,13 +144,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square h-4 w-4 mr-1">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
-                <span>42</span>
+                <span>{{featuredArticle?.comments?.length}}</span>
               </div>
             </div>
           </div>
   
           <!-- Bouton "Read Full Article" -->
-          <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 px-4 py-2 mt-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 group">
+          <button [routerLink]="['/articles', featuredArticle?.id]" class="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 px-4 py-2 mt-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 group">
             Read Full Article
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2 h-4 w-4 transition-transform group-hover:translate-x-1">
               <path d="M5 12h14"></path>
@@ -170,16 +170,18 @@
   
     <!-- Conteneur principal -->
     <div class="container mx-auto px-4">
-      <!-- En-tête avec titre et bouton "Filter" -->
+      <!-- En-tête avec titre et bouton "Create an Article" -->
       <div class="flex justify-between items-center mb-8">
         <h2 class="text-2xl md:text-3xl font-bold">
           <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">Latest Articles</span>
         </h2>
-        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-full border-slate-200">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-filter h-4 w-4 mr-2">
-            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        <!-- Bouton "Create an Article" remplace "Filter" -->
+        <button routerLink="/create_article" class="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-10 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-4 w-4 mr-2">
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
           </svg>
-          Filter
+          Create an Article
         </button>
       </div>
   
@@ -201,7 +203,7 @@
         <div *ngFor="let article of articles" class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300">
           <div class="relative h-48 overflow-hidden">
             <!-- Image de l'article -->
-            <img [src]="article.photo ||  '/placeholder.svg'" alt="{{ article.title }}" [routerLink]="['/articles', article.id]" class="cursor-pointer w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            <img [src]="'/assets/img/' + article.photo ||  '/placeholder.svg'" alt="{{ article.title }}" [routerLink]="['/articles', article.id]" class="cursor-pointer w-full h-full object-cover transition-transform duration-500 hover:scale-105">
             <!-- Badges (si disponibles) -->
             <div class="absolute top-3 left-3 flex flex-wrap gap-2">
               <!-- <div *ngFor="let tag of article.tags" class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-black/30 text-white hover:bg-black/40 backdrop-blur-sm" data-v0-t="badge">
@@ -212,18 +214,18 @@
           <div class="p-5">
             <!-- Titre de l'article -->
             <h3 class="font-bold text-xl mb-2 line-clamp-2 hover:text-purple-600 transition-colors">
-              <a [routerLink]="['/article', article.id]">{{ article.title }}</a>
+              <a [routerLink]="['/articles', article.id]">{{ article.title }}</a>
             </h3>
             <!-- Description de l'article -->
             <p class="text-slate-600 text-sm mb-4 line-clamp-2">{{ article.description }}</p>
             <!-- Auteur et date -->
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center">
-                <img [src]="article.user?.photo || '/placeholder.svg'" alt="{{ article.user?.username }}" class="h-8 w-8 rounded-full mr-2 object-cover">
+                <img [src]="'/assets/img/' + article.user?.photo || '/placeholder.svg'" alt="{{ article.user?.username }}" class="h-8 w-8 rounded-full mr-2 object-cover">
                 <div>
                   <p class="text-sm font-medium">{{ article.user?.username }}</p>
                   <div class="flex items-center text-xs text-slate-500">
-                    <span>{{ article.date | date: 'dd/MM/yyyy' }}</span>
+                    <span>{{ article.date ? (article.date | date: 'dd/MM/yyyy HH:mm:ss') : '' }}</span>
                     <span class="mx-1">•</span>
                     <span>5 min read</span> <!-- Durée de lecture statique (à adapter) -->
                   </div>
@@ -233,13 +235,13 @@
             <!-- Actions (likes, commentaires, etc.) -->
             <div class="flex items-center justify-between pt-4 border-t border-slate-200">
               <div class="flex items-center gap-4">
-                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 rounded-md p-0 h-auto text-slate-500 hover:text-pink-600 hover:bg-transparent" data-state="closed">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md p-0 h-auto text-slate-500 hover:text-pink-600 hover:bg-transparent" data-state="closed">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart h-5 w-5 mr-1">
                     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                   </svg>
                   <span>156</span> <!-- Nombre de likes statique (à adapter) -->
                 </button>
-                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 rounded-md p-0 h-auto text-slate-500 hover:text-purple-600 hover:bg-transparent" data-state="closed">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-md p-0 h-auto text-slate-500 hover:text-purple-600 hover:bg-transparent" data-state="closed">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square h-5 w-5 mr-1">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                   </svg>
@@ -247,12 +249,12 @@
                 </button>
               </div>
               <div class="flex items-center gap-2">
-                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-8 w-8 text-slate-500 hover:text-purple-600" data-state="closed">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-8 w-8 text-slate-500 hover:text-purple-600" data-state="closed">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark h-5 w-5">
                     <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
                   </svg>
                 </button>
-                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent h-8 w-8 text-slate-500 hover:text-purple-600" data-state="closed">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-8 w-8 text-slate-500 hover:text-purple-600" data-state="closed">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 h-5 w-5">
                     <circle cx="18" cy="5" r="3"></circle>
                     <circle cx="6" cy="12" r="3"></circle>
@@ -269,7 +271,7 @@
   
       <!-- Bouton "Load More Articles" -->
       <div class="text-center">
-        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8 rounded-full border-slate-200">
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8 rounded-full border-slate-200">
           Load More Articles
         </button>
       </div>

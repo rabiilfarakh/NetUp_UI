@@ -2,8 +2,10 @@ import { CommentDTORes } from "../../comment/model/comment.model";
 
 export interface ArticleDTOReq {
   title: string;
+  photo: string
   description: string;
-  date: string; 
+  date: string | Date; 
+  user_id: number
 }
 
 export interface ArticleDTORes {

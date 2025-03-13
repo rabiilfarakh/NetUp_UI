@@ -9,13 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { ArticleComponent } from './article.component';
+import { CreateArticleComponent } from './components/create-article/create-article.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     ArticleComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    CreateArticleComponent
   ],
   imports: [
     CommonModule,
