@@ -14,6 +14,7 @@ import { CommunityModule } from './community/community.module';
 import { ArticleModule } from './article/article.module';
 import { UsersModule } from './users/users.module';
 import { CommentModule } from './comment/comment.module';
+import { RencontreModule } from './rencontre/rencontre.module';
 
 
 
@@ -32,6 +33,7 @@ import { CommentModule } from './comment/comment.module';
     BrowserAnimationsModule,
     CommunityModule,
     ArticleModule,
+    RencontreModule,
     UsersModule,
     CommentModule,
 

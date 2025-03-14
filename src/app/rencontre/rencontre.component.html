@@ -1,0 +1,971 @@
+<app-header></app-header>
+<div class="container mx-auto px-4 py-4">
+    <!-- Header Section -->
+    <div class="flex items-center justify-between">
+      <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-navy-800 to-navy-900">
+        Rencontres
+      </h1>
+      
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-3">
+        <!-- Search Bar (Visible on Medium Screens and Larger) -->
+        <div class="relative hidden md:flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+               stroke-linejoin="round" class="lucide lucide-search absolute left-3 text-slate-400 h-4 w-4">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input type="text" placeholder="Rechercher des rencontres..." value=""
+                 class="flex h-10 border px-3 text-sm ring-offset-background file:border-0 file:bg-transparent 
+                        file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground 
+                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring 
+                        focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 
+                        pl-9 pr-4 py-2 w-60 lg:w-80 rounded-full bg-slate-100 border-slate-200">
+        </div>
+  
+        <!-- Create Meeting Button -->
+        <button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-«rl»" 
+                data-state="closed"
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium 
+                       ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 
+                       focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
+                       disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 
+                       bg-primary hover:bg-primary/90 h-9 px-3 rounded-full bg-gradient-to-r from-navy-800 
+                       to-navy-900 hover:from-navy-700 hover:to-navy-800 text-white border-0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+               class="lucide lucide-plus h-4 w-4 mr-2">
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          Créer une rencontre
+        </button>
+  
+        <!-- Filter Button -->
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium 
+                       ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 
+                       focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
+                       disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 
+                       border bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10 rounded-full 
+                       border-slate-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24  Travels" fill="none" 
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+               class="lucide lucide-filter h-4 w-4">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Mobile Search Bar -->
+    <div class="mt-4 relative md:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+           stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 h-4 w-4">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.3-4.3"></path>
+      </svg>
+      <input type="text" placeholder="Rechercher des rencontres..." value=""
+             class="flex h-10 border px-3 text-sm ring-offset-background file:border-0 file:bg-transparent 
+                    file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground 
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring 
+                    focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 
+                    pl-9 pr-4 py-2 w-full rounded-full bg-slate-100 border-slate-200">
+    </div>
+  </div>
+  
+  <main class="container mx-auto px-4 py-8">
+    <!-- Grille principale avec deux colonnes sur grand écran -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Section de la carte interactive (2/3 de la grille sur grand écran) -->
+      <div class="lg:col-span-2 h-[400px] lg:h-[600px] bg-slate-100 rounded-xl overflow-hidden border border-slate-200 shadow-sm">
+        <div class="relative w-full h-full bg-slate-200">
+          <!-- Image de fond de la carte -->
+          <img 
+            alt="Carte interactive" 
+            class="w-full h-full object-cover opacity-50" 
+            src="/placeholder.svg?height=600&width=800&text=Carte+Interactive"
+          >
+          
+          <!-- Conteneur des marqueurs et légende -->
+          <div class="absolute inset-0">
+            <!-- Marqueurs sur la carte -->
+            <div 
+              class="absolute cursor-pointer transition-all duration-300 hover:scale-110" 
+              style="top: 20%; left: 20%;"
+            >
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white text-navy-800 shadow-lg border-2 border-white">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-5 w-5"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+            </div>
+            
+            <div 
+              class="absolute cursor-pointer transition-all duration-300 hover:scale-110" 
+              style="top: 70%; left: 90%;"
+            >
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white text-navy-800 shadow-lg border-2 border-white">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-5 w-5"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+            </div>
+            
+            <div 
+              class="absolute cursor-pointer transition-all duration-300 hover:scale-110" 
+              style="top: 40%; left: 80%;"
+            >
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white text-navy-800 shadow-lg border-2 border-white">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-5 w-5"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+            </div>
+            
+            <div 
+              class="absolute cursor-pointer transition-all duration-300 hover:scale-110" 
+              style="top: 90%; left: 70%;"
+            >
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white text-navy-800 shadow-lg border-2 border-white">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-5 w-5"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+            </div>
+            
+            <div 
+              class="absolute cursor-pointer transition-all duration-300 hover:scale-110" 
+              style="top: 60%; left: 60%;"
+            >
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white text-navy-800 shadow-lg border-2 border-white">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-5 w-5"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+            </div>
+            
+            <div 
+              class="absolute cursor-pointer transition-all duration-300 hover:scale-110" 
+              style="top: 30%; left: 50%;"
+            >
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white text-navy-800 shadow-lg border-2 border-white">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-5 w-5"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Légende en bas à gauche -->
+            <div class="absolute bottom-4 left-4 bg-white p-3 rounded-lg shadow-md border border-slate-200">
+              <div class="text-sm font-medium mb-2">Légende</div>
+              <div class="flex items-center mb-2">
+                <div class="w-6 h-6 rounded-full bg-white text-navy-800 border-2 border-white flex items-center justify-center mr-2">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-map-pin h-3 w-3"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <span class="text-xs">Rencontre disponible</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-6 h-6 rounded-full bg-navy-800 text-white flex items-center justify-center mr-2">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-map-pin h-3 w-3"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <span class="text-xs">Rencontre rejointe</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Section des rencontres à venir (1/3 de la grille sur grand écran) -->
+      <div class="space-y-6">
+        <!-- En-tête avec titre et nombre de résultats -->
+        <div class="flex justify-between items-center">
+          <h2 class="text-xl font-bold">Rencontres à venir</h2>
+          <div class="text-sm text-slate-500">6 résultats</div>
+        </div>
+        
+        <!-- Onglets Liste/Calendrier -->
+        <div dir="ltr" data-orientation="horizontal" class="w-full">
+          <div 
+            role="tablist" 
+            aria-orientation="horizontal" 
+            class="h-10 items-center justify-center text-muted-foreground grid grid-cols-2 mb-4 bg-slate-100 p-1 rounded-full w-full" 
+            tabindex="0" 
+            data-orientation="horizontal" 
+            style="outline: none;"
+          >
+            <button 
+              type="button" 
+              role="tab" 
+              aria-selected="true" 
+              aria-controls="radix-«ro»-content-list" 
+              data-state="active" 
+              id="radix-«ro»-trigger-list" 
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-full data-[state=active]:bg-white" 
+              tabindex="0" 
+              data-orientation="horizontal" 
+              data-radix-collection-item=""
+            >
+              Liste
+            </button>
+            <button 
+              type="button" 
+              role="tab" 
+              aria-selected="false" 
+              aria-controls="radix-«ro»-content-calendar" 
+              data-state="inactive" 
+              id="radix-«ro»-trigger-calendar" 
+              class="inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-full data-[state=active]:bg-white" 
+              tabindex="-1" 
+              data-orientation="horizontal" 
+              data-radix-collection-item=""
+            >
+              Calendrier
+            </button>
+          </div>
+        </div>
+        
+        <!-- Liste des rencontres à venir avec défilement -->
+        <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+          <!-- Rencontre 1 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-lg">Café et discussion tech</h3>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground bg-slate-100" data-v0-t="badge">
+                  4 participants
+                </div>
+              </div>
+              <div class="flex items-center text-sm text-slate-500 mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-calendar h-4 w-4 mr-1"
+                >
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                  <path d="M3 10h18"></path>
+                </svg>
+                <span>jeudi 15 juin</span>
+                <span class="mx-2">•</span>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-clock h-4 w-4 mr-1"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>18:00</span>
+              </div>
+              <div class="flex items-start mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-4 w-4 text-slate-500 mt-0.5 mr-1 flex-shrink-0"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="text-sm text-slate-600">Café de l'Innovation, Paris</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Technologie
+                </div>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Réseautage
+                </div>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-9 rounded-md text-slate-500 hover:text-navy-600 p-0">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-chevron-down h-4 w-4 mr-1"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                  Plus de détails
+                </button>
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-9 px-3 rounded-full bg-gradient-to-r from-navy-800 to-navy-900 hover:from-navy-700 hover:to-navy-800 text-white">
+                  Rejoindre
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rencontre 2 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-lg">Jam session au parc</h3>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground bg-slate-100" data-v0-t="badge">
+                  7 participants
+                </div>
+              </div>
+              <div class="flex items-center text-sm text-slate-500 mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-calendar h-4 w-4 mr-1"
+                >
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                  <path d="M3 10h18"></path>
+                </svg>
+                <span>samedi 17 juin</span>
+                <span class="mx-2">•</span>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-clock h-4 w-4 mr-1"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>15:00</span>
+              </div>
+              <div class="flex items-start mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-4 w-4 text-slate-500 mt-0.5 mr-1 flex-shrink-0"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="text-sm text-slate-600">Parc de la Villette, Paris</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Musique
+                </div>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Art
+                </div>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-9 rounded-md text-slate-500 hover:text-navy-600 p-0">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-chevron-down h-4 w-4 mr-1"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                  Plus de détails
+                </button>
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-9 px-3 rounded-full bg-gradient-to-r from-navy-800 to-navy-900 hover:from-navy-700 hover:to-navy-800 text-white">
+                  Rejoindre
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rencontre 3 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-lg">Échange linguistique FR/EN</h3>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground bg-slate-100" data-v0-t="badge">
+                  12 participants
+                </div>
+              </div>
+              <div class="flex items-center text-sm text-slate-500 mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-calendar h-4 w-4 mr-1"
+                >
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                  <path d="M3 10h18"></path>
+                </svg>
+                <span>vendredi 16 juin</span>
+                <span class="mx-2">•</span>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-clock h-4 w-4 mr-1"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>19:00</span>
+              </div>
+              <div class="flex items-start mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-4 w-4 text-slate-500 mt-0.5 mr-1 flex-shrink-0"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="text-sm text-slate-600">Bibliothèque Nationale, Paris</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Langues
+                </div>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Éducation
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-200 animate-in slide-in-from-top">
+                <p class="text-sm text-slate-600 mb-4">
+                  Pratiquez votre français ou anglais lors d'une rencontre conviviale. Alternance entre les deux langues.
+                </p>
+                <div class="flex items-center mb-4">
+                  <span class="relative flex shrink-0 overflow-hidden rounded-full h-8 w-8 mr-2">
+                    <img 
+                      class="aspect-square h-full w-full" 
+                      alt="Sophie Martin" 
+                      src="/placeholder.svg?height=50&width=50"
+                    >
+                  </span>
+                  <div>
+                    <div class="text-sm font-medium">Sophie Martin</div>
+                    <div class="flex items-center text-xs text-slate-500">
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        class="lucide lucide-star h-3 w-3 fill-amber-500 text-amber-500 mr-1"
+                      >
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                      </svg>
+                      <span>4.9</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center text-sm text-slate-500 mb-4">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-users h-4 w-4 mr-1"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  <span>12 / 20 participants</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-9 rounded-md text-slate-500 hover:text-navy-600 p-0">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-chevron-up h-4 w-4 mr-1"
+                  >
+                    <path d="m18 15-6-6-6 6"></path>
+                  </svg>
+                  Moins de détails
+                </button>
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-9 px-3 rounded-full bg-gradient-to-r from-navy-800 to-navy-900 hover:from-navy-700 hover:to-navy-800 text-white">
+                  Rejoindre
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rencontre 4 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-lg">Tournoi d'échecs amical</h3>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground bg-slate-100" data-v0-t="badge">
+                  8 participants
+                </div>
+              </div>
+              <div class="flex items-center text-sm text-slate-500 mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-calendar h-4 w-4 mr-1"
+                >
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                  <path d="M3 10h18"></path>
+                </svg>
+                <span>dimanche 18 juin</span>
+                <span class="mx-2">•</span>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-clock h-4 w-4 mr-1"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>14:00</span>
+              </div>
+              <div class="flex items-start mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-4 w-4 text-slate-500 mt-0.5 mr-1 flex-shrink-0"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="text-sm text-slate-600">Maison des Associations, Lyon</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Jeux
+                </div>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Stratégie
+                </div>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-9 rounded-md text-slate-500 hover:text-navy-600 p-0">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-chevron-down h-4 w-4 mr-1"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                  Plus de détails
+                </button>
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-9 px-3 rounded-full bg-gradient-to-r from-navy-800 to-navy-900 hover:from-navy-700 hover:to-navy-800 text-white">
+                  Rejoindre
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rencontre 5 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-lg">Randonnée urbaine et photographie</h3>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground bg-slate-100" data-v0-t="badge">
+                  6 participants
+                </div>
+              </div>
+              <div class="flex items-center text-sm text-slate-500 mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-calendar h-4 w-4 mr-1"
+                >
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                  <path d="M3 10h18"></path>
+                </svg>
+                <span>lundi 19 juin</span>
+                <span class="mx-2">•</span>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-clock h-4 w-4 mr-1"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>10:00</span>
+              </div>
+              <div class="flex items-start mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-4 w-4 text-slate-500 mt-0.5 mr-1 flex-shrink-0"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="text-sm text-slate-600">Place Bellecour, Lyon</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Photographie
+                </div>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Voyage
+                </div>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-9 rounded-md text-slate-500 hover:text-navy-600 p-0">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-chevron-down h-4 w-4 mr-1"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                  Plus de détails
+                </button>
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-9 px-3 rounded-full bg-gradient-to-r from-navy-800 to-navy-900 hover:from-navy-700 hover:to-navy-800 text-white">
+                  Rejoindre
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Rencontre 6 -->
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-lg">Atelier cuisine végétarienne</h3>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground bg-slate-100" data-v0-t="badge">
+                  5 participants
+                </div>
+              </div>
+              <div class="flex items-center text-sm text-slate-500 mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-calendar h-4 w-4 mr-1"
+                >
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                  <path d="M3 10h18"></path>
+                </svg>
+                <span>mardi 20 juin</span>
+                <span class="mx-2">•</span>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-clock h-4 w-4 mr-1"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>18:30</span>
+              </div>
+              <div class="flex items-start mb-3">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-map-pin h-4 w-4 text-slate-500 mt-0.5 mr-1 flex-shrink-0"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="text-sm text-slate-600">Espace Culinaire, Marseille</span>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Cuisine
+                </div>
+                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-secondary-foreground hover:bg-secondary/80 bg-slate-100" data-v0-t="badge">
+                  Santé
+                </div>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent h-9 rounded-md text-slate-500 hover:text-navy-600 p-0">
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    class="lucide lucide-chevron-down h-4 w-4 mr-1"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                  Plus de détails
+                </button>
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 h-9 px-3 rounded-full bg-gradient-to-r from-navy-800 to-navy-900 hover:from-navy-700 hover:to-navy-800 text-white">
+                  Rejoindre
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+<app-footer></app-footer>
