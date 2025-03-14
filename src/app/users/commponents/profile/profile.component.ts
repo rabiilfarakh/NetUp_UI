@@ -6,7 +6,7 @@ import { Inject, PLATFORM_ID } from '@angular/core';
 import { User } from '../../model/user.model';
 import { UserService } from '../../service/user.service';
 import { AuthService } from '../../auth/service/auth.service';
-import { ToastrService } from 'ngx-toastr'; // Importez ToastrService
+import { ToastrService } from 'ngx-toastr';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
-    private toastr: ToastrService, // Injectez ToastrService
+    private toastr: ToastrService,
     @Inject(PLATFORM_ID) private platformId: object
   ) {
     this.profileForm = this.fb.group({
@@ -38,7 +38,8 @@ export class ProfileComponent implements OnInit {
       address: [''],
       experience: [''],
       location: [''],
-      photo: ['']
+      photo: [''],
+      community: [{ value: '', disabled: true }] // Ajout de community en lecture seule
     });
   }
 
@@ -81,7 +82,7 @@ export class ProfileComponent implements OnInit {
       error: (err) => {
         this.error = 'Erreur lors du chargement du profil';
         this.loading = false;
-        this.toastr.error('Erreur lors du chargement du profil', 'Erreur'); // Message d'erreur
+        this.toastr.error('Erreur lors du chargement du profil', 'Erreur');
         console.error('Erreur:', err);
       }
     });
@@ -95,7 +96,8 @@ export class ProfileComponent implements OnInit {
       address: user.address,
       experience: user.experience,
       location: user.location,
-      photo: user.photo
+      photo: user.photo,
+      community: user.community?.name || 'Aucune communauté' 
     });
     this.photoPreview = user.photo ? `/assets/img/${user.photo}` : null;
   }
@@ -127,7 +129,7 @@ export class ProfileComponent implements OnInit {
 
   saveProfile(): void {
     if (this.profileForm.invalid || !this.user) {
-      this.toastr.warning('Veuillez remplir tous les champs requis', 'Attention'); // Message d'avertissement
+      this.toastr.warning('Veuillez remplir tous les champs requis', 'Attention');
       return;
     }
 
@@ -140,6 +142,7 @@ export class ProfileComponent implements OnInit {
       experience: this.profileForm.get('experience')?.value || undefined,
       location: this.profileForm.get('location')?.value || undefined,
       photo: this.profileForm.get('photo')?.value || undefined
+
     };
 
     this.userService.updateUser(this.user.id, updatedUser).subscribe({
@@ -148,12 +151,12 @@ export class ProfileComponent implements OnInit {
         this.editMode = false;
         this.loading = false;
         this.photoPreview = user.photo ? `/assets/img/${user.photo}` : null;
-        this.toastr.success('Profil mis à jour avec succès', 'Succès'); // Message de succès
+        this.toastr.success('Profil mis à jour avec succès', 'Succès');
       },
       error: (err) => {
         this.error = 'Erreur lors de la mise à jour du profil';
         this.loading = false;
-        this.toastr.error('Erreur lors de la mise à jour du profil', 'Erreur'); // Message d'erreur
+        this.toastr.error('Erreur lors de la mise à jour du profil', 'Erreur');
         console.error('Erreur:', err);
       }
     });

@@ -1,3 +1,5 @@
+import { CommunityDTORes } from "../../community/model/community.model";
+
 export interface User {
     id: number;
     username: string;
@@ -8,4 +10,5 @@ export interface User {
     experience: string;
     location: string;
     photo: string;
+    community: CommunityDTORes; 
   }
