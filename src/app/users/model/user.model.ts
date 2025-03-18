@@ -12,3 +12,9 @@ export interface User {
     photo: string;
     community: CommunityDTORes; 
   }
+
+  export interface UserRes {
+    id: number;
+    username: string;
+    email: string;
+  }
