@@ -148,6 +148,7 @@ import { jwtDecode } from 'jwt-decode';
   `]
 })
 export class RencontreComponent implements OnInit {
+  creatorId: number | null = null; // Initialisé à null au lieu de 0
   rencontres: Rencontre[] = [];
   selectedRencontre: Rencontre | null = null;
   viewMode: 'grid' | 'list' | 'calendar' = 'grid';
@@ -167,6 +168,7 @@ export class RencontreComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.getUserIdFromToken();
+    this.creatorId = this.userId; // Utiliser userId comme creatorId
     this.loadRencontres();
   }
 
@@ -185,7 +187,7 @@ export class RencontreComponent implements OnInit {
   }
 
   joinRencontre(rencontreId: number, event: Event): void {
-    event.stopPropagation(); // Prevent card expansion when clicking join
+    event.stopPropagation();
     
     if (this.userId === null) {
       console.error('Utilisateur non connecté');
@@ -195,7 +197,6 @@ export class RencontreComponent implements OnInit {
     this.loading = true;
     this.rencontreService.joinRencontre(rencontreId, this.userId).subscribe({
       next: (updatedRencontre) => {
-        // Update the specific rencontre in the list
         this.rencontres = this.rencontres.map(r => 
           r.id === updatedRencontre.id ? updatedRencontre : r
         );
@@ -307,8 +308,15 @@ export class RencontreComponent implements OnInit {
       return;
     }
     
-    // Make sure dates are properly formatted
+    if (this.creatorId === null) {
+      console.error('Utilisateur non connecté ou creatorId non défini');
+      return;
+    }
+
+    console.log('Creator ID utilisé pour la création:', this.creatorId); // Log pour vérifier
+
     const formattedData: RencontreRequest = {
+      creatorId: this.creatorId,
       title: rencontreData.title,
       description: rencontreData.description,
       startTime: rencontreData.startTime,
@@ -318,7 +326,7 @@ export class RencontreComponent implements OnInit {
     this.loading = true;
     this.rencontreService.createRencontre(formattedData).subscribe({
       next: (newRencontre) => {
-        this.rencontres = [...this.rencontres, newRencontre]; // Add to existing list
+        this.rencontres = [...this.rencontres, newRencontre];
         this.closeCreateModal();
         this.loading = false;
       },
@@ -331,14 +339,12 @@ export class RencontreComponent implements OnInit {
 
   toggleDetails(rencontreId: number): void {
     if (this.expandedRencontreId === rencontreId) {
-      this.expandedRencontreId = null; // collapse if already expanded
+      this.expandedRencontreId = null;
     } else {
-      this.expandedRencontreId = rencontreId; // expand this one
+      this.expandedRencontreId = rencontreId; 
       
-      // Optionally load more details if needed
       this.rencontreService.getRencontreById(rencontreId).subscribe({
         next: (rencontre) => {
-          // Update the specific rencontre in the list with more details
           this.rencontres = this.rencontres.map(r => 
             r.id === rencontre.id ? rencontre : r
           );

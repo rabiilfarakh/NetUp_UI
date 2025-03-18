@@ -11,6 +11,7 @@ export interface Rencontre {
   }
   
   export interface RencontreRequest {
+    creatorId: number;
     title: string;
     description: string;
     startTime: string;
