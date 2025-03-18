@@ -103,29 +103,7 @@
             </button>
           </div>
           
-          <div class="relative">
-            <button class="flex items-center gap-1 px-3 py-2 bg-white rounded-lg border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50">
-              <span>Trier par</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-                   class="h-4 w-4">
-                <path d="m6 9 6 6 6-6"></path>
-              </svg>
-            </button>
-            <div class="absolute right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-slate-200 z-10 hidden">
-              <div class="py-1">
-                <button (click)="setSortBy('date')" class="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
-                  Date (plus proche)
-                </button>
-                <button (click)="setSortBy('participants')" class="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
-                  Nombre de participants
-                </button>
-                <button (click)="setSortBy('title')" class="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
-                  Titre (A-Z)
-                </button>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </header>
@@ -174,10 +152,11 @@
           
           <div class="flex items-center justify-between">
             <div class="flex -space-x-2">
-              <div *ngFor="let participant of rencontre.participants.slice(0, 3)" 
-                   class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-xs font-medium text-slate-600">
-                {{ participant.username.charAt(0) }}
-              </div>
+
+            <div *ngFor="let participant of rencontre.participants.slice(0, 3)" 
+                class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-xs font-medium text-slate-600">
+              {{ participant.username ? participant.username.charAt(0) : '?' }}
+            </div>
               <div *ngIf="rencontre.participants.length > 3" 
                    class="w-8 h-8 rounded-full bg-indigo-100 border-2 border-white flex items-center justify-center text-xs font-medium text-indigo-600">
                 +{{ rencontre.participants.length - 3 }}
@@ -219,9 +198,11 @@
             <div>
               <h4 class="text-sm font-medium text-slate-700">Participants</h4>
               <div class="flex flex-wrap gap-2 mt-1">
+                
                 <div *ngFor="let participant of rencontre.participants" 
                      class="inline-flex items-center rounded-full border border-slate-200 px-2.5 py-0.5 text-xs font-medium text-slate-700 bg-slate-50">
-                  {{ participant.username }} 
+                  {{ participant.username}} 
+                  
                 </div>
                 <div *ngIf="rencontre.participants.length === 0" class="text-sm text-slate-500">
                   Aucun participant pour le moment
@@ -419,62 +400,63 @@
           </svg>
         </button>
       </div>
-      <form (ngSubmit)="createRencontre(form.value)" #form="ngForm">
-        <div class="mb-5">
-          <label class="block text-sm font-medium text-slate-700 mb-1">Titre</label>
-          <input type="text" name="title" ngModel required #titleInput="ngModel"
-                 [ngClass]="{'border-red-500 ring-red-200': titleInput.invalid && titleInput.touched,
-                             'border-slate-300 focus:border-indigo-500 focus:ring-indigo-200': !(titleInput.invalid && titleInput.touched)}"
-                 class="w-full h-12 px-4 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all">
-          <p *ngIf="titleInput.invalid && titleInput.touched" class="text-red-500 text-xs mt-1">
-            Le titre est requis
-          </p>
-        </div>
-        <div class="mb-5">
-          <label class="block text-sm font-medium text-slate-700 mb-1">Description</label>
-          <textarea name="description" ngModel required #descInput="ngModel"
-                    [ngClass]="{'border-red-500 ring-red-200': descInput.invalid && descInput.touched,
-                                'border-slate-300 focus:border-indigo-500 focus:ring-indigo-200': !(descInput.invalid && descInput.touched)}"
-                    class="w-full px-4 py-3 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all min-h-[120px]"></textarea>
-          <p *ngIf="descInput.invalid && descInput.touched" class="text-red-500 text-xs mt-1">
-            La description est requise
-          </p>
-        </div>
-        <div class="mb-5">
-          <label class="block text-sm font-medium text-slate-700 mb-1">Date et heure de début</label>
-          <input type="datetime-local" name="startTime" ngModel required #startInput="ngModel"
-                 [ngClass]="{'border-red-500 ring-red-200': startInput.invalid && startInput.touched,
-                             'border-slate-300 focus:border-indigo-500 focus:ring-indigo-200': !(startInput.invalid && startInput.touched)}"
-                 class="w-full h-12 px-4 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all">
-          <p *ngIf="startInput.invalid && startInput.touched" class="text-red-500 text-xs mt-1">
-            La date et l'heure de début sont requises
-          </p>
-        </div>
-        <div class="mb-6">
-          <label class="block text-sm font-medium text-slate-700 mb-1">Date et heure de fin</label>
-          <input type="datetime-local" name="endTime" ngModel required #endInput="ngModel"
-                 [ngClass]="{'border-red-500 ring-red-200': endInput.invalid && endInput.touched,
-                             'border-slate-300 focus:border-indigo-500 focus:ring-indigo-200': !(endInput.invalid && endInput.touched)}"
-                 class="w-full h-12 px-4 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all">
-          <p *ngIf="endInput.invalid && endInput.touched" class="text-red-500 text-xs mt-1">
-            La date et l'heure de fin sont requises
-          </p>
-        </div>
-        <div class="flex justify-end space-x-3">
-          <button type="button" (click)="closeCreateModal()" 
-                  class="btn-secondary">Annuler</button>
-          <button type="submit" [disabled]="!form.valid || loading" 
-                  class="btn-primary flex items-center">
-            <span *ngIf="loading" class="mr-2">
-              <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            </span>
-            Créer
-          </button>
-        </div>
-      </form>
+<!-- Dans la modale de création de rencontre -->
+<form (ngSubmit)="createRencontre(form.value)" #form="ngForm" novalidate>
+  <div class="mb-5">
+    <label class="block text-sm font-medium text-slate-700 mb-1">Titre</label>
+    <input type="text" name="title" ngModel required #titleInput="ngModel"
+           [ngClass]="{'border-red-500 ring-red-200': titleInput.invalid && titleInput.touched,
+                       'border-slate-300 focus:border-indigo-500 focus:ring-indigo-200': !(titleInput.invalid && titleInput.touched)}"
+           class="w-full h-12 px-4 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all">
+    <p *ngIf="titleInput.invalid && titleInput.touched" class="text-red-500 text-xs mt-1">
+      Le titre est requis
+    </p>
+  </div>
+  <div class="mb-5">
+    <label class="block text-sm font-medium text-slate-700 mb-1">Description</label>
+    <textarea name="description" ngModel required #descInput="ngModel"
+              [ngClass]="{'border-red-500 ring-red-200': descInput.invalid && descInput.touched,
+                          'border-slate-300 focus:border-indigo-500 focus:ring-indigo-200': !(descInput.invalid && descInput.touched)}"
+              class="w-full px-4 py-3 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all min-h-[120px]"></textarea>
+    <p *ngIf="descInput.invalid && descInput.touched" class="text-red-500 text-xs mt-1">
+      La description est requise
+    </p>
+  </div>
+  <div class="mb-5">
+    <label class="block text-sm font-medium text-slate-700 mb-1">Date et heure de début</label>
+    <input type="datetime-local" name="startTime" ngModel required #startInput="ngModel"
+           [ngClass]="{'border-red-500 ring-red-200': startInput.invalid && startInput.touched,
+                       'border-slate-300 focus:border-indigo-500 focus:ring-indigo-200': !(startInput.invalid && startInput.touched)}"
+           class="w-full h-12 px-4 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all">
+    <p *ngIf="startInput.invalid && startInput.touched" class="text-red-500 text-xs mt-1">
+      La date et l'heure de début sont requises
+    </p>
+  </div>
+  <div class="mb-6">
+    <label class="block text-sm font-medium text-slate-700 mb-1">Date et heure de fin</label>
+    <input type="datetime-local" name="endTime" ngModel required #endInput="ngModel"
+           [ngClass]="{'border-red-500 ring-red-200': endInput.invalid && endInput.touched,
+                       'border-slate-300 focus:border-indigo-500 focus:ring-indigo-200': !(endInput.invalid && endInput.touched)}"
+           class="w-full h-12 px-4 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all">
+    <p *ngIf="endInput.invalid && endInput.touched" class="text-red-500 text-xs mt-1">
+      La date et l'heure de fin sont requises
+    </p>
+  </div>
+  <div class="flex justify-end space-x-3">
+    <button type="button" (click)="closeCreateModal()" 
+            class="btn-secondary">Annuler</button>
+    <button type="submit" [disabled]="!form.valid || loading" 
+            class="btn-primary flex items-center">
+      <span *ngIf="loading" class="mr-2">
+        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </span>
+      Créer
+    </button>
+  </div>
+</form>
     </div>
   </div>
 </div>
