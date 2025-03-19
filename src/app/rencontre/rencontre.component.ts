@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { RencontreService } from './services/rencontre.service';
-import { Rencontre, RencontreRequest } from './model/rencontre.model';
+
 import { isPlatformBrowser } from '@angular/common';
 import { AuthService } from '../users/auth/service/auth.service';
 import { jwtDecode } from 'jwt-decode';
+import { Rencontre, RencontreRequest } from './model/rencontre.model';
 
 @Component({
   standalone: false,
@@ -148,7 +149,7 @@ import { jwtDecode } from 'jwt-decode';
   `]
 })
 export class RencontreComponent implements OnInit {
-  creatorId: number | null = null; // Initialisé à null au lieu de 0
+  creatorId: number | null = null; 
   rencontres: Rencontre[] = [];
   selectedRencontre: Rencontre | null = null;
   viewMode: 'grid' | 'list' | 'calendar' = 'grid';
@@ -168,7 +169,7 @@ export class RencontreComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.getUserIdFromToken();
-    this.creatorId = this.userId; // Utiliser userId comme creatorId
+    this.creatorId = this.userId; 
     this.loadRencontres();
   }
 
@@ -190,24 +191,28 @@ export class RencontreComponent implements OnInit {
     event.stopPropagation();
     
     if (this.userId === null) {
-      console.error('Utilisateur non connecté');
-      return;
+        console.error('Utilisateur non connecté');
+        return;
     }
     
     this.loading = true;
+    this.expandedRencontreId = rencontreId; 
+    
     this.rencontreService.joinRencontre(rencontreId, this.userId).subscribe({
-      next: (updatedRencontre) => {
-        this.rencontres = this.rencontres.map(r => 
-          r.id === updatedRencontre.id ? updatedRencontre : r
-        );
-        this.loading = false;
-      },
-      error: (error) => {
-        console.error('Error joining rencontre:', error);
-        this.loading = false;
-      }
+        next: (updatedRencontre) => {
+            this.rencontres = this.rencontres.map(r => 
+                r.id === updatedRencontre.id ? updatedRencontre : r
+            );
+            this.loading = false;
+            this.expandedRencontreId = null;
+        },
+        error: (error) => {
+            console.error('Error joining rencontre:', error);
+            this.loading = false;
+            this.expandedRencontreId = null;
+        }
     });
-  }
+}
 
   toggleViewMode(mode: 'grid' | 'list' | 'calendar'): void {
     this.viewMode = mode;
@@ -313,7 +318,7 @@ export class RencontreComponent implements OnInit {
       return;
     }
 
-    console.log('Creator ID utilisé pour la création:', this.creatorId); // Log pour vérifier
+    console.log('Creator ID utilisé pour la création:', this.creatorId); 
 
     const formattedData: RencontreRequest = {
       creatorId: this.creatorId,
@@ -358,8 +363,11 @@ export class RencontreComponent implements OnInit {
 
   isUserParticipating(rencontre: Rencontre): boolean {
     if (!this.userId) return false;
-    return rencontre.participants.some(participant => participant.id === this.userId);
-  }
+    
+    return rencontre.participants.some(participant => 
+        participant.user.id.toString() === this.userId?.toString()
+    );
+}
 
   setActiveCategory(category: 'all' | 'participating' | 'created'): void {
     this.activeCategory = category;

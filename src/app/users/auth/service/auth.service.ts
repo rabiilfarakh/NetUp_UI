@@ -2,6 +2,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +36,20 @@ export class AuthService {
     localStorage.removeItem('role');
     }
   }
+
+    getUserIdFromToken(): string | null {
+      if (isPlatformBrowser(this.platformId)) {
+        const token = localStorage.getItem('token');
+        if (token) {
+          try {
+            const decodedToken: any = jwtDecode(token);
+            return decodedToken.sub || null;
+          } catch (error) {
+            console.error('Erreur lors du décodage du token:', error);
+            return null;
+          }
+        }
+      }
+      return null;
+    }
 }

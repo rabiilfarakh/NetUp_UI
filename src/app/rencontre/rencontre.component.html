@@ -155,7 +155,7 @@
 
             <div *ngFor="let participant of rencontre.participants.slice(0, 3)" 
                 class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-xs font-medium text-slate-600">
-              {{ participant.username ? participant.username.charAt(0) : '?' }}
+              {{ participant.user.username ? participant.user.username.charAt(0) : '?' }}
             </div>
               <div *ngIf="rencontre.participants.length > 3" 
                    class="w-8 h-8 rounded-full bg-indigo-100 border-2 border-white flex items-center justify-center text-xs font-medium text-indigo-600">
@@ -201,7 +201,7 @@
                 
                 <div *ngFor="let participant of rencontre.participants" 
                      class="inline-flex items-center rounded-full border border-slate-200 px-2.5 py-0.5 text-xs font-medium text-slate-700 bg-slate-50">
-                  {{ participant.username}} 
+                  {{ participant.user.username}} 
                   
                 </div>
                 <div *ngIf="rencontre.participants.length === 0" class="text-sm text-slate-500">
@@ -276,7 +276,7 @@
               <div class="flex -space-x-2">
                 <div *ngFor="let participant of rencontre.participants.slice(0, 3)" 
                      class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-xs font-medium text-slate-600">
-                  {{ participant.username.charAt(0) }}
+                  {{ participant.user.username.charAt(0) }}
                 </div>
                 <div *ngIf="rencontre.participants.length > 3" 
                      class="w-8 h-8 rounded-full bg-indigo-100 border-2 border-white flex items-center justify-center text-xs font-medium text-indigo-600">
@@ -321,7 +321,7 @@
                 <div class="flex flex-wrap gap-2 mt-1">
                   <div *ngFor="let participant of rencontre.participants" 
                        class="inline-flex items-center rounded-full border border-slate-200 px-2.5 py-0.5 text-xs font-medium text-slate-700 bg-slate-50">
-                    {{ participant.username }}
+                    {{ participant.user.username }}
                   </div>
                   <div *ngIf="rencontre.participants.length === 0" class="text-sm text-slate-500">
                     Aucun participant pour le moment
