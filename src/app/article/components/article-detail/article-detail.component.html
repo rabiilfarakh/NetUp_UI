@@ -54,16 +54,26 @@
             </h2>
         
             <!-- Liste des commentaires -->
-            <div class="space-y-6">
+          <div class="space-y-6">
             <div *ngFor="let comment of article?.comments" class="rounded-lg bg-card text-card-foreground shadow-sm border border-gray-200">
-                <div class="p-6 pt-6">
-                <!-- Afficher la description du commentaire -->
-                <p class="mt-2">{{ comment.description }}</p>
-                <!-- Afficher la date du commentaire -->
-                <p class="text-sm text-gray-500 mt-2">{{ comment.date | date: 'medium' }}</p>
+              <div class="p-6 pt-4">
+                <!-- En-tête du commentaire avec l'image et le nom d'utilisateur -->
+              <div class="flex items-center mb-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                  <img [src]="'/assets/img/' + comment.articleDTOCom.user.photo" 
+                      alt="Photo de profil" 
+                      class="w-full h-full object-cover"
+                      onerror="this.src='/assets/img/default-user.png'">
                 </div>
+                <div>
+                  <p class="font-medium">{{ comment.articleDTOCom.user.username || 'Utilisateur' }}</p>
+                  <p class="text-xs text-gray-500">{{ comment.date | date: 'medium' }}</p>
+                </div>
+              </div>
+              <p class="mt-2">{{ comment.description }}</p>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
   
         <div class="bg-gray-50 p-6 rounded-lg">

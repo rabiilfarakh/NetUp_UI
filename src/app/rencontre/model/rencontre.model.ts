@@ -7,8 +7,14 @@ export interface Rencontre {
     startTime: string;
     endTime: string;
     creator: UserRes;
-    participants: UserRes[];
-  }
+    participants: Participant[];
+}
+
+export interface Participant {
+    id: number;
+    user: UserRes;
+    status: 'PENDING' | 'APPROVED' | 'REJECTED';
+}
   
   export interface RencontreRequest {
     creatorId: number;
