@@ -6,6 +6,7 @@ export interface Rencontre {
     description: string;
     startTime: string;
     endTime: string;
+    location: string
     creator: UserRes;
     participants: Participant[];
 }
@@ -22,4 +23,5 @@ export interface Participant {
     description: string;
     startTime: string;
     endTime: string;
+    location: string;
   }

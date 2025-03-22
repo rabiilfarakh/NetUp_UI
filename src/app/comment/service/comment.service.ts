@@ -24,8 +24,11 @@ export class CommentService {
     return this.http.get<CommentDTORes[]>(`${this.apiUrl}/article/${articleId}`);
   }
 
-  updateComment(id: number, comment: CommentDTOReq): Observable<CommentDTORes> {
-    return this.http.put<CommentDTORes>(`${this.apiUrl}/${id}`, comment);
+  // updateComment(id: number, comment: CommentDTOReq): Observable<CommentDTORes> {
+  //   return this.http.put<CommentDTORes>(`${this.apiUrl}/${id}`, comment);
+  // }
+  updateComment(commentId: number, comment: CommentDTOReq): Observable<CommentDTORes> {
+    return this.http.put<CommentDTORes>(`${this.apiUrl}/${commentId}`, comment);
   }
 
   deleteComment(id: number): Observable<void> {

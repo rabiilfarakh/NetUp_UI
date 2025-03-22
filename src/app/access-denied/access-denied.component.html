@@ -1,10 +1,15 @@
 <div class="flex flex-col items-center justify-center h-screen bg-gray-100">
     <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-      <h2 class="text-3xl font-bold text-red-600">🚫 Accès Refusé</h2>
+      <h2 class="text-3xl font-bold text-red-600"> 404 <br>Accès Refusé</h2>
       <p class="text-gray-700 mt-4">Vous n'avez pas la permission d'accéder à cette page.</p>
-      <a routerLink="/" class="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-        Retour à l'accueil
-      </a>
+    <!-- Bouton de retour -->
+    <a routerLink="/login" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2">
+        <path d="m12 19-7-7 7-7"></path>
+        <path d="M19 12H5"></path>
+      </svg>
+      Retour 
+    </a>
     </div>
   </div>
   

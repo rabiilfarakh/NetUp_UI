@@ -325,7 +325,8 @@ export class RencontreComponent implements OnInit {
       title: rencontreData.title,
       description: rencontreData.description,
       startTime: rencontreData.startTime,
-      endTime: rencontreData.endTime
+      endTime: rencontreData.endTime,
+      location: rencontreData.location,
     };
     
     this.loading = true;

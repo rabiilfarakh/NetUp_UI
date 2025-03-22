@@ -1,3 +1,4 @@
+import { User, UserRes } from "../../users/model/user.model";
 
 export interface CommentDTOReq {
     description: string;
@@ -11,15 +12,7 @@ export interface CommentDTORes {
     id: number;
     description: string;
     date: string;
-    articleDTOCom: {
-      id: number;
-     
-      user: {
-        id: number;
-        username: string;
-        photo: string;
-      
-      }
-    }
+    user: User
+    
   }
   
