@@ -6,7 +6,7 @@ import { CommunityService } from '../../../community/service/community.service';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/service/auth.service';
-import { ToastrService } from 'ngx-toastr'; 
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   standalone: false,
@@ -43,6 +43,16 @@ export class DashboardComponent implements OnInit {
   filteredCommunities: CommunityDTORes[] = [];
   filteredUsers: User[] = [];
 
+  // Pagination pour les communautés
+  currentPageCommunities: number = 1;
+  itemsPerPageCommunities: number = 10;
+  totalPagesCommunities: number = 0;
+
+  // Pagination pour les utilisateurs
+  currentPageUsers: number = 1;
+  itemsPerPageUsers: number = 10;
+  totalPagesUsers: number = 0;
+
   constructor(
     private communityService: CommunityService,
     private userService: UserService,
@@ -70,7 +80,7 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout(); 
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 
@@ -87,6 +97,7 @@ export class DashboardComponent implements OnInit {
       next: (data) => {
         this.communities = data;
         this.filteredCommunities = [...this.communities];
+        this.updatePaginationCommunities();
         this.calculateStats();
       },
       error: (error) => {
@@ -96,10 +107,24 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  loadUsers(): void {
+    this.userService.getUsers().subscribe({
+      next: (data) => {
+        this.users = data;
+        this.filteredUsers = [...this.users];
+        this.updatePaginationUsers();
+        this.calculateStats();
+      },
+      error: (error) => {
+        this.toastr.error('Erreur lors du chargement des utilisateurs', 'Erreur');
+        console.error('Erreur lors du chargement des utilisateurs', error);
+      }
+    });
+  }
+
   openCommunityModal(community?: CommunityDTORes): void {
     this.editMode = !!community;
     this.currentCommunityId = community?.id || null;
-    
     if (community) {
       this.communityForm.patchValue({
         name: community.name,
@@ -108,7 +133,6 @@ export class DashboardComponent implements OnInit {
     } else {
       this.communityForm.reset();
     }
-    
     this.showCommunityModal = true;
   }
 
@@ -169,38 +193,20 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  loadUsers(): void {
-    this.userService.getUsers().subscribe({
-      next: (data) => {
-        this.users = data;
-        this.filteredUsers = [...this.users];
-        this.calculateStats();
-      },
-      error: (error) => {
-        this.toastr.error('Erreur lors du chargement des utilisateurs', 'Erreur');
-        console.error('Erreur lors du chargement des utilisateurs', error);
-      }
-    });
-  }
-
   openUserModal(user?: User): void {
     this.editMode = !!user;
     this.currentUserId = user?.id || null;
-    
     if (user) {
       this.userForm.patchValue({
         username: user.username,
         email: user.email
       });
-      
-      this.userForm.get('password')?.setValidators(this.editMode ? null : Validators.required);
-      this.userForm.get('password')?.updateValueAndValidity();
+      this.userForm.get('password')?.setValidators(null);
     } else {
       this.userForm.reset();
       this.userForm.get('password')?.setValidators(Validators.required);
-      this.userForm.get('password')?.updateValueAndValidity();
     }
-    
+    this.userForm.get('password')?.updateValueAndValidity();
     this.showUserModal = true;
   }
 
@@ -224,11 +230,9 @@ export class DashboardComponent implements OnInit {
         username: formData.username,
         email: formData.email
       };
-      
       if (formData.password) {
         updateData.password = formData.password;
       }
-      
       this.userService.updateUser(this.currentUserId, updateData).subscribe({
         next: () => {
           this.loadUsers();
@@ -242,7 +246,6 @@ export class DashboardComponent implements OnInit {
       });
     } else {
       const userData: User = formData;
-      
       this.userService.registerUser(userData).subscribe({
         next: () => {
           this.loadUsers();
@@ -275,13 +278,8 @@ export class DashboardComponent implements OnInit {
   calculateStats(): void {
     this.stats.totalUsers = this.users.length;
     this.stats.totalCommunities = this.communities.length;
-    
-    const currentDate = new Date();
-    const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-    
     this.stats.newUsersThisMonth = Math.floor(this.users.length * 0.3);
     this.stats.newCommunitiesThisMonth = Math.floor(this.communities.length * 0.2);
-    
     this.stats.activeUsers = Math.floor(this.users.length * 0.7);
     this.stats.activeCommunities = Math.floor(this.communities.length * 0.8);
   }
@@ -289,31 +287,68 @@ export class DashboardComponent implements OnInit {
   searchCommunities(): void {
     if (!this.searchTerm.trim()) {
       this.filteredCommunities = [...this.communities];
-      return;
+    } else {
+      const term = this.searchTerm.toLowerCase().trim();
+      this.filteredCommunities = this.communities.filter(
+        community => community.name.toLowerCase().includes(term) || 
+                     community.description.toLowerCase().includes(term)
+      );
     }
-    
-    const term = this.searchTerm.toLowerCase().trim();
-    this.filteredCommunities = this.communities.filter(
-      community => community.name.toLowerCase().includes(term) || 
-                  community.description.toLowerCase().includes(term)
-    );
+    this.currentPageCommunities = 1; // Réinitialiser à la première page
+    this.updatePaginationCommunities();
   }
 
   searchUsers(): void {
     if (!this.searchTerm.trim()) {
       this.filteredUsers = [...this.users];
-      return;
+    } else {
+      const term = this.searchTerm.toLowerCase().trim();
+      this.filteredUsers = this.users.filter(
+        user => user.username.toLowerCase().includes(term) || 
+                user.email.toLowerCase().includes(term)
+      );
     }
-    
-    const term = this.searchTerm.toLowerCase().trim();
-    this.filteredUsers = this.users.filter(
-      user => user.username.toLowerCase().includes(term) || 
-              user.email.toLowerCase().includes(term)
-    );
+    this.currentPageUsers = 1; // Réinitialiser à la première page
+    this.updatePaginationUsers();
   }
 
   onSearch(): void {
     this.searchCommunities();
     this.searchUsers();
+  }
+
+  // Méthodes de pagination
+  updatePaginationCommunities(): void {
+    this.totalPagesCommunities = Math.ceil(this.filteredCommunities.length / this.itemsPerPageCommunities) || 1;
+    this.currentPageCommunities = Math.min(this.currentPageCommunities, this.totalPagesCommunities);
+  }
+
+  updatePaginationUsers(): void {
+    this.totalPagesUsers = Math.ceil(this.filteredUsers.length / this.itemsPerPageUsers) || 1;
+    this.currentPageUsers = Math.min(this.currentPageUsers, this.totalPagesUsers);
+  }
+
+  changePageCommunities(page: number): void {
+    if (page >= 1 && page <= this.totalPagesCommunities) {
+      this.currentPageCommunities = page;
+    }
+  }
+
+  changePageUsers(page: number): void {
+    if (page >= 1 && page <= this.totalPagesUsers) {
+      this.currentPageUsers = page;
+    }
+  }
+
+  getPaginatedCommunities(): CommunityDTORes[] {
+    const startIndex = (this.currentPageCommunities - 1) * this.itemsPerPageCommunities;
+    const endIndex = Math.min(startIndex + this.itemsPerPageCommunities, this.filteredCommunities.length);
+    return this.filteredCommunities.slice(startIndex, endIndex);
+  }
+
+  getPaginatedUsers(): User[] {
+    const startIndex = (this.currentPageUsers - 1) * this.itemsPerPageUsers;
+    const endIndex = Math.min(startIndex + this.itemsPerPageUsers, this.filteredUsers.length);
+    return this.filteredUsers.slice(startIndex, endIndex);
   }
 }

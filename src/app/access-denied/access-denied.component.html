@@ -1,15 +1,97 @@
-<div class="flex flex-col items-center justify-center h-screen bg-gray-100">
-    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-      <h2 class="text-3xl font-bold text-red-600"> 404 <br>Accès Refusé</h2>
-      <p class="text-gray-700 mt-4">Vous n'avez pas la permission d'accéder à cette page.</p>
-    <!-- Bouton de retour -->
-    <a routerLink="/login" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2">
-        <path d="m12 19-7-7 7-7"></path>
-        <path d="M19 12H5"></path>
-      </svg>
-      Retour 
-    </a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Accès Refusé</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    .pulse-animation {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .glitch {
+      position: relative;
+    }
+    .glitch::before, .glitch::after {
+      content: "404";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00ff;
+      clip: rect(24px, 550px, 90px, 0);
+      animation: glitch-anim 3s infinite linear alternate-reverse;
+    }
+    .glitch::after {
+      left: -2px;
+      text-shadow: -2px 0 #00ffff;
+      clip: rect(85px, 550px, 140px, 0);
+      animation: glitch-anim 2s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-anim {
+      0% { clip: rect(5px, 9999px, 28px, 0); }
+      25% { clip: rect(54px, 9999px, 120px, 0); }
+      50% { clip: rect(32px, 9999px, 92px, 0); }
+      75% { clip: rect(66px, 9999px, 78px, 0); }
+      100% { clip: rect(12px, 9999px, 134px, 0); }
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center px-4">
+  <div class="relative">
+    <!-- Decorative elements -->
+    <div class="absolute -top-20 -left-20 w-40 h-40 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+    <div class="absolute -bottom-20 -right-20 w-40 h-40 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+    
+    <div class="relative z-10 bg-white p-8 rounded-xl shadow-2xl text-center max-w-md border border-gray-100">
+      <!-- Animated 404 -->
+      <div class="relative mb-6">
+        <h1 class="glitch text-8xl font-extrabold text-black tracking-tighter">404</h1>
+      </div>
+      
+      <!-- Lock icon -->
+      <div class="w-24 h-24 mx-auto mb-6 float-animation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full text-black">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </div>
+      
+      <h2 class="text-2xl font-bold text-black mb-2">Accès Refusé</h2>
+      <p class="text-gray-600 mb-8">Vous n'avez pas la permission d'accéder à cette page. Veuillez vous connecter ou contacter l'administrateur.</p>
+      
+      <!-- Button with hover effect -->
+      <a routerLink="/login" class="inline-flex items-center justify-center gap-2 bg-black text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:bg-gray-800 hover:shadow-lg transform hover:-translate-y-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 19-7-7 7-7"></path>
+          <path d="M19 12H5"></path>
+        </svg>
+        Retour à la connexion
+      </a>
+      
+      <!-- Decorative dots -->
+      <div class="absolute -bottom-3 -right-3 flex space-x-1">
+        <div class="w-2 h-2 rounded-full bg-gray-300 pulse-animation"></div>
+        <div class="w-2 h-2 rounded-full bg-gray-400 pulse-animation" style="animation-delay: 0.2s"></div>
+        <div class="w-2 h-2 rounded-full bg-gray-500 pulse-animation" style="animation-delay: 0.4s"></div>
+      </div>
     </div>
   </div>
-  
+</body>
+</html>
